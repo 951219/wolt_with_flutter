@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/herobanner.dart';
+import 'package:wolt_with_flutter/secondrow.dart';
 
 void main() {
   runApp(MyApp());
@@ -49,7 +50,7 @@ class _HomeState extends State<Home> {
         child: ListView(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 19),
               child: Row(children: [
                 Text('Discover ',
                     style: TextStyle(
@@ -66,6 +67,30 @@ class _HomeState extends State<Home> {
               ]),
             ),
             HeroBanner(),
+            Padding(
+              padding: EdgeInsets.fromLTRB(19, 0, 19, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    'Only on Wolt',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  FlatButton(
+                    color: Colors.blue[50],
+                    textColor: Colors.blue,
+                    onPressed: () => {},
+                    child: Text(
+                      'See all',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Features(),
             Container(
               child: Column(
                 children: [
