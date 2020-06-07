@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wolt_with_flutter/herobanner.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,39 +29,43 @@ class _HomeState extends State<Home> {
 
   final tabs = [
     Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Container(
-          child: Row(children: [
-            Text(
-              'Discover ',
-              style: TextStyle(color: Colors.black),
-            ),
-            Text(
-              'Tallinn',
-              style: TextStyle(color: Colors.blue),
-            ),
-          ]),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //   title: Container(
+      //     child: Row(children: [
+      //       Text(
+      //         'Discover ',
+      //         style: TextStyle(color: Colors.black),
+      //       ),
+      //       Text(
+      //         'Tallinn',
+      //         style: TextStyle(color: Colors.blue),
+      //       ),
+      //     ]),
+      //   ),
+      // ),
       body: Container(
-        padding: EdgeInsets.all(10),
-        // margin: EdgeInsets.fromLTRB(0, 8, 0, 8),
+        padding: EdgeInsets.only(top: 55),
         child: ListView(
           children: <Widget>[
-            Container(
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Text('test'),
-                      Text('test2'),
-                      Text('test3'),
-                    ],
-                  ),
-                ],
-              ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: Row(children: [
+                Text('Discover ',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 38,
+                        fontWeight: FontWeight.bold)),
+                Text(
+                  'Tallinn',
+                  style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 38,
+                      fontWeight: FontWeight.bold),
+                ),
+              ]),
             ),
+            HeroBanner(),
             Container(
               child: Column(
                 children: [
@@ -68,7 +73,9 @@ class _HomeState extends State<Home> {
                     leading: Text(
                       'Quick links',
                       style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
+                          // color: Colors.b,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                   ListTile(
@@ -84,15 +91,19 @@ class _HomeState extends State<Home> {
         ),
       ),
     ),
-    Container(
-      child: Center(child: Text('Delivery')),
-      //TODO listview with card for restaurants
-    ),
+
+    Center(child: Text('Delivery')),
+    //TODO listview with card for restaurants
+
     Center(child: Text('Near by')),
+    //TODO google maps api, gps
     Center(child: Text('Search')),
+    //TODO Search function,
     Center(child: Text('Me')),
+    //TODO profile
   ];
 
+//bottom bar
   @override
   Widget build(BuildContext context) {
     return Scaffold(
