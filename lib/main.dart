@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/discovery.dart';
 import 'package:wolt_with_flutter/nearby.dart';
 
+import 'delivery.dart';
+// import 'package:wolt_with_flutter/nearby1.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -47,12 +50,13 @@ class _HomeState extends State<Home> {
       // ),
       body: Discovery(),
     ),
-    Center(child: Text('Delivery')),
+    Delivery(),
     Nearby(),
     //TODO listview with card for restaurants
 
     //TODO google maps api, gps
     Center(child: Text('Search')),
+    // Navigator.push(context, MaterialPageRoute(builder: (context) => Nearby()))
     //TODO Search function,
     Center(child: Text('Me')),
     //TODO profile

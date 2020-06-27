@@ -1,5 +1,5 @@
-import 'package:wolt_with_flutter/discoveryWidgets/herobanner.dart';
-import 'package:wolt_with_flutter/discoveryWidgets/secondrow.dart';
+import 'package:wolt_with_flutter/Widgets/herobanner.dart';
+import 'package:wolt_with_flutter/Widgets/secondrow.dart';
 import 'package:flutter/material.dart';
 
 class Discovery extends StatelessWidget {
