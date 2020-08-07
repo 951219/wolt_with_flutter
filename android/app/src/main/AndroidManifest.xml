@@ -34,8 +34,8 @@
                  Flutter's first frame. -->
 
 
-            <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="AIzaSyBBJljOSelbYAB4GxG9YSpGmDIbzjUKwzc"/>
+            <!-- <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyBBJljOSelbYAB4GxG9YSpGmDIbzjUKwzc"/> -->
             <!-- //TODO added api keys here -->
 
             <meta-data
