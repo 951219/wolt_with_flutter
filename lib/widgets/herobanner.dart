@@ -34,7 +34,7 @@ class HeroBanner extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             padding: EdgeInsets.all(10),
             children: _bannerItems().map((photo) {
-              return _FeatureGridItem(featurePhoto: photo); //Feature(photo);
+              return _HeroGridItem(featurePhoto: photo); //Feature(photo);
             }).toList()));
   }
 }
@@ -61,8 +61,8 @@ class _HeroBannerItem {
 //   }
 // }
 
-class _FeatureGridItem extends StatelessWidget {
-  _FeatureGridItem({Key key, @required this.featurePhoto}) : super(key: key);
+class _HeroGridItem extends StatelessWidget {
+  _HeroGridItem({Key key, @required this.featurePhoto}) : super(key: key);
 
   final _HeroBannerItem featurePhoto;
   @override

@@ -36,81 +36,94 @@ class Discovery extends StatelessWidget {
               ]),
             ),
           ),
-          SliverFillRemaining(
-            child: Column(
-              children: <Widget>[
-                HeroBanner(),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        'Only on Wolt',
+          SliverList(
+            delegate: SliverChildListDelegate([
+              HeroBanner(),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      'Only on Wolt!',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    FlatButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      color: Colors.blue[50],
+                      textColor: Colors.blue,
+                      onPressed: () => {},
+                      child: Text(
+                        'See all',
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      FlatButton(
-                        color: Colors.blue[50],
-                        textColor: Colors.blue,
-                        onPressed: () => {},
-                        child: Text(
-                          'See all',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                // ),
-                Features(),
-                Container(
-                  child: Column(
-                    children: [
-                      ListTile(
-                        leading: Text(
-                          'Quick links',
-                          style: TextStyle(
-                              // color: Colors.b,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
+              ),
+              // ),
+              Features(),
+              Container(
+                padding: EdgeInsets.only(left: 10),
+                child: Column(
+                  children: [
+                    ListTile(
+                      leading: Text(
+                        'Quick links',
+                        style: TextStyle(
+                            // color: Colors.b,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
-                      ListTile(
-                        leading: Text('Redeem Code'),
-                      ),
-                      ListTile(
-                        leading: Text('Redeem Code 2'),
-                      ),
-                    ],
-                  ),
+                    ),
+                    ListTile(
+                      leading: Text('Redeem Code'),
+                      trailing: Icon(Icons.navigate_next),
+                      onTap: () => {},
+                      dense: true,
+                    ),
+                    Divider(
+                      indent: 12,
+                      height: 1,
+                      color: Colors.grey[350],
+                    ),
+                    ListTile(
+                      leading: Text('Customer Support'),
+                      trailing: Icon(Icons.navigate_next),
+                      onTap: () => {},
+                      dense: true,
+                    ),
+                    Divider(
+                      indent: 12,
+                      height: 1,
+                      color: Colors.grey[350],
+                    ),
+                    ListTile(
+                      leading: Text('Send a gift'),
+                      trailing: Icon(Icons.navigate_next),
+                      onTap: () => {},
+                      dense: true,
+                    ),
+                    Divider(
+                      indent: 12,
+                      height: 1,
+                      color: Colors.grey[350],
+                    ),
+                    Divider(
+                      height: 100,
+                      color: Colors.white,
+                    )
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ]),
           ),
         ],
       ),
     );
   }
 }
-// Scaffold(
-//   appBar: AppBar(
-//     backgroundColor: Colors.white,
-//     title: Container(
-//       child: Row(children: [
-//TODO decreasing appbar, can use SliverAppBar widget
-//         Text(
-//           'Discover ',
-//           style: TextStyle(color: Colors.black),
-//         ),
-//         Text(
-//           'Tallinn',
-//           style: TextStyle(color: Colors.blue),
-//         ),
-//       ]),
-//     ),
-//   ),
-// body:
-// )
