@@ -6,21 +6,19 @@ import 'package:wolt_with_flutter/screens/nearby.dart';
 import 'package:wolt_with_flutter/screens/profile.dart';
 import 'package:wolt_with_flutter/screens/search.dart';
 
-// import 'package:wolt_with_flutter/nearby1.dart';
-
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Wolt with Flutter',
-      theme: ThemeData(
-          // primarySwatch: Colors.blue,
-          ),
+      // theme: ThemeData(
+      // primarySwatch: Colors.blue,
+      // ),
       home: Home(),
     );
   }
@@ -48,37 +46,36 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        type: BottomNavigationBarType.fixed,
-        iconSize: 27,
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.star),
-              title: Text('Discovery'),
-              backgroundColor: Colors.blue),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.motorcycle),
-              title: Text('Delivery'),
-              backgroundColor: Colors.blue),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.directions_walk),
-              title: Text('Near by'),
-              backgroundColor: Colors.blue),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              title: Text('Search'),
-              backgroundColor: Colors.blue),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline),
-              title: Text('Me'),
-              backgroundColor: Colors.blue),
-        ],
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-      ),
+          currentIndex: _currentIndex,
+          type: BottomNavigationBarType.fixed,
+          iconSize: 27,
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.star),
+                title: Text('Discovery'),
+                backgroundColor: Colors.blue),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.motorcycle),
+                title: Text('Delivery'),
+                backgroundColor: Colors.blue),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.directions_walk),
+                title: Text('Near by'),
+                backgroundColor: Colors.blue),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.search),
+                title: Text('Search'),
+                backgroundColor: Colors.blue),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person_outline),
+                title: Text('Me'),
+                backgroundColor: Colors.blue),
+          ],
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          }),
     );
   }
 }

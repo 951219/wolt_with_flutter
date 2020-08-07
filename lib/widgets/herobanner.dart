@@ -29,12 +29,11 @@ class HeroBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 290,
-        width: 220,
+        height: 285,
         child: ListView(
             scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.all(10.0),
-            children: _bannerItems().map<Widget>((photo) {
+            padding: EdgeInsets.all(10),
+            children: _bannerItems().map((photo) {
               return _FeatureGridItem(featurePhoto: photo); //Feature(photo);
             }).toList()));
   }
@@ -82,8 +81,8 @@ class _FeatureGridItem extends StatelessWidget {
                     bottom: 16,
                     left: 16,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        //TODO text alla vasakule
                         Text(
                           featurePhoto.title,
                           style: TextStyle(
