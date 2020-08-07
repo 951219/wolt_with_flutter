@@ -78,6 +78,26 @@ class Discovery extends StatelessWidget {
           ),
         ],
       ),
+      // ),
     );
   }
 }
+// Scaffold(
+//   appBar: AppBar(
+//     backgroundColor: Colors.white,
+//     title: Container(
+//       child: Row(children: [
+//TODO decreasing appbar, can use SliverAppBar widget
+//         Text(
+//           'Discover ',
+//           style: TextStyle(color: Colors.black),
+//         ),
+//         Text(
+//           'Tallinn',
+//           style: TextStyle(color: Colors.blue),
+//         ),
+//       ]),
+//     ),
+//   ),
+// body:
+// )

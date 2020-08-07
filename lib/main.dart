@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:wolt_with_flutter/discovery.dart';
-import 'package:wolt_with_flutter/nearby.dart';
+import 'package:wolt_with_flutter/screens/delivery.dart';
+import 'package:wolt_with_flutter/screens/discovery.dart';
+import 'package:wolt_with_flutter/screens/nearby.dart';
+import 'package:wolt_with_flutter/screens/profile.dart';
+import 'package:wolt_with_flutter/screens/search.dart';
 
-import 'delivery.dart';
 // import 'package:wolt_with_flutter/nearby1.dart';
 
 void main() {
@@ -32,34 +34,11 @@ class _HomeState extends State<Home> {
   int _currentIndex = 0;
 
   final tabs = [
-    Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.white,
-      //   title: Container(
-      //     child: Row(children: [
-      //       Text(
-      //         'Discover ',
-      //         style: TextStyle(color: Colors.black),
-      //       ),
-      //       Text(
-      //         'Tallinn',
-      //         style: TextStyle(color: Colors.blue),
-      //       ),
-      //     ]),
-      //   ),
-      // ),
-      body: Discovery(),
-    ),
+    Discovery(),
     Delivery(),
     Nearby(),
-    //TODO listview with card for restaurants
-
-    //TODO google maps api, gps
-    Center(child: Text('Search')),
-    // Navigator.push(context, MaterialPageRoute(builder: (context) => Nearby()))
-    //TODO Search function,
-    Center(child: Text('Me')),
-    //TODO profile
+    Search(),
+    Profile(),
   ];
 
 //bottom bar

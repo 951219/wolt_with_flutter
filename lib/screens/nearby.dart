@@ -6,6 +6,8 @@ import 'package:latlong/latlong.dart';
 
 //TODO https://stackoverflow.com/questions/49764905/how-to-assign-future-to-widget-in-flutter
 
+//TODO listview with card for restaurants
+
 class Nearby extends StatelessWidget {
   const Nearby({
     Key key,
