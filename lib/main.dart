@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/screens/delivery.dart';
 import 'package:wolt_with_flutter/screens/discovery.dart';
 import 'package:wolt_with_flutter/screens/nearby.dart';
+// import 'package:wolt_with_flutter/screens/nearby1.dart';
 import 'package:wolt_with_flutter/screens/profile.dart';
 import 'package:wolt_with_flutter/screens/search.dart';
 
