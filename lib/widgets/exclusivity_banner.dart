@@ -13,7 +13,7 @@ class Features extends StatelessWidget {
           imageURL:
               'https://cdn.pixabay.com/photo/2011/09/27/18/52/sparrow-9950_960_720.jpg',
           title: 'Loud bird',
-          subtitle: 'sometimes the bird is loud',
+          subtitle: 'Small birdie',
           featureString: 'Feature2'),
       _FeaturePhoto(
           imageURL:
@@ -31,7 +31,7 @@ class Features extends StatelessWidget {
           imageURL:
               'https://cdn.pixabay.com/photo/2011/09/27/18/52/sparrow-9950_960_720.jpg',
           title: 'Loud bird',
-          subtitle: 'sometimes the bird is loud',
+          subtitle: 'new bird',
           featureString: 'Feature2'),
       _FeaturePhoto(
           imageURL:
@@ -45,11 +45,10 @@ class Features extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 210,
-        width: 120,
+        height: 200,
         child: ListView(
             scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.only(left: 10.0),
+            padding: EdgeInsets.only(left: 20.0),
             children: _feature().map<Widget>((photo) {
               return _FeatureGridItem(featurePhoto: photo); //Feature(photo);
             }).toList()));
@@ -70,49 +69,54 @@ class _FeatureGridItem extends StatelessWidget {
   final _FeaturePhoto featurePhoto;
   @override
   Widget build(BuildContext context) {
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+    return Card(
+      semanticContainer: true,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      child: Column(
         children: <Widget>[
-          Card(
-            semanticContainer: true,
-            clipBehavior: Clip.antiAliasWithSaveLayer,
+          Container(
+            child: Image.network(featurePhoto.imageURL,
+                width: 160, height: 110, fit: BoxFit.cover),
+          ),
+          Container(
+            height: 70,
             child: Column(
-              children: <Widget>[
-                Stack(
-                  children: <Widget>[
-                    Image.network(featurePhoto.imageURL,
-                        width: 160, height: 170, fit: BoxFit.cover),
-                    // Positioned(
-                    //     bottom: 16,
-                    //     left: 14,
-                    //     child: Container(
-                    //       height: 35,
-                    //       width: 80,
-                    //       decoration: BoxDecoration(
-                    //           borderRadius: BorderRadius.circular(3.0),
-                    //           color: Colors.black, //Color(0xff0F0F0F),
-                    //           boxShadow: [
-                    //             BoxShadow(
-                    //               color: Colors.black.withOpacity(0.3),
-                    //             )
-                    //           ]),
-                    //       child: Center(
-                    //         child: Text(
-                    //           featurePhoto.featureString,
-                    //           style: TextStyle(color: Colors.white),
-                    //         ),
-                    //       ),
-                    //     ))
-                  ],
+              crossAxisAlignment: CrossAxisAlignment.start,
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  featurePhoto.title,
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                Container(child: Text('test'))
+                Text(featurePhoto.subtitle),
+                Container(
+                  margin: EdgeInsets.all(10),
+                  child: Divider(
+                    //TODO add a visible divider
+                    // indent: 12,
+                    height: 2,
+                    color: Colors.black,
+                  ),
+                ),
+                Row(
+                  children: [
+                    Text('\$'),
+                    Text(' * '),
+                    Text('45 min'),
+                    Text(' * '),
+                    Text(' :D '),
+                    Text('9.0'),
+                  ],
+                )
               ],
             ),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0)),
-            // elevation: 10,
-            margin: EdgeInsets.all(10),
-          ),
-        ]);
+            //TODO fix text positioning in exxclusivity banner
+          )
+        ],
+      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+      elevation: 2,
+      // margin: EdgeInsets.all(10),
+    );
   }
 }

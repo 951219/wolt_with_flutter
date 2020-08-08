@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//TODO convert to carousel so it would have a page indicator in the bottom and it would snap into place ,allowing scrolling one by one
+
 class HeroBanner extends StatelessWidget {
   List<_HeroBannerItem> _bannerItems() {
     return [
@@ -29,13 +31,12 @@ class HeroBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 290,
-        width: 220,
+        height: 285,
         child: ListView(
             scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.all(10.0),
-            children: _bannerItems().map<Widget>((photo) {
-              return _FeatureGridItem(featurePhoto: photo); //Feature(photo);
+            padding: EdgeInsets.all(10),
+            children: _bannerItems().map((photo) {
+              return _HeroGridItem(featurePhoto: photo); //Feature(photo);
             }).toList()));
   }
 }
@@ -62,8 +63,8 @@ class _HeroBannerItem {
 //   }
 // }
 
-class _FeatureGridItem extends StatelessWidget {
-  _FeatureGridItem({Key key, @required this.featurePhoto}) : super(key: key);
+class _HeroGridItem extends StatelessWidget {
+  _HeroGridItem({Key key, @required this.featurePhoto}) : super(key: key);
 
   final _HeroBannerItem featurePhoto;
   @override
@@ -82,11 +83,17 @@ class _FeatureGridItem extends StatelessWidget {
                     bottom: 16,
                     left: 16,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        //TODO text alla vasakule
                         Text(
                           featurePhoto.title,
                           style: TextStyle(
+                            shadows: [
+                              Shadow(
+                                blurRadius: 10.0,
+                                color: Colors.black,
+                              )
+                            ],
                             color: Colors.white,
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -95,6 +102,12 @@ class _FeatureGridItem extends StatelessWidget {
                         Text(
                           featurePhoto.subtitle,
                           style: TextStyle(
+                              shadows: [
+                                Shadow(
+                                  blurRadius: 10.0,
+                                  color: Colors.black,
+                                )
+                              ],
                               color: Colors.white,
                               fontSize: 20,
                               fontWeight: FontWeight.bold),
