@@ -89,7 +89,15 @@ class _FeatureGridItem extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Text(featurePhoto.subtitle),
-                Spacer(), //Divider ka võimalik
+                Container(
+                  margin: EdgeInsets.all(10),
+                  child: Divider(
+                    //TODO add a visible divider
+                    // indent: 12,
+                    height: 2,
+                    color: Colors.black,
+                  ),
+                ),
                 Row(
                   children: [
                     Text('\$'),
@@ -102,6 +110,7 @@ class _FeatureGridItem extends StatelessWidget {
                 )
               ],
             ),
+            //TODO fix text positioning in exxclusivity banner
           )
         ],
       ),

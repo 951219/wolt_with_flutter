@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//TODO convert to carousel so it would have a page indicator in the bottom and it would snap into place ,allowing scrolling one by one
+
 class HeroBanner extends StatelessWidget {
   List<_HeroBannerItem> _bannerItems() {
     return [
@@ -86,6 +88,12 @@ class _HeroGridItem extends StatelessWidget {
                         Text(
                           featurePhoto.title,
                           style: TextStyle(
+                            shadows: [
+                              Shadow(
+                                blurRadius: 10.0,
+                                color: Colors.black,
+                              )
+                            ],
                             color: Colors.white,
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -94,6 +102,12 @@ class _HeroGridItem extends StatelessWidget {
                         Text(
                           featurePhoto.subtitle,
                           style: TextStyle(
+                              shadows: [
+                                Shadow(
+                                  blurRadius: 10.0,
+                                  color: Colors.black,
+                                )
+                              ],
                               color: Colors.white,
                               fontSize: 20,
                               fontWeight: FontWeight.bold),

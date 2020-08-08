@@ -1,6 +1,7 @@
-import 'package:wolt_with_flutter/Widgets/herobanner.dart';
-import 'package:wolt_with_flutter/Widgets/secondrow.dart';
 import 'package:flutter/material.dart';
+import 'package:wolt_with_flutter/widgets/exclusivity_banner.dart';
+import 'package:wolt_with_flutter/widgets/hero_banner.dart';
+import 'package:wolt_with_flutter/widgets/specials_banner.dart';
 
 class Discovery extends StatelessWidget {
   const Discovery({
@@ -17,7 +18,8 @@ class Discovery extends StatelessWidget {
             expandedHeight: 120,
             floating: false,
             pinned: true,
-            elevation: 1,
+            elevation: 02,
+            // TODO remove the shadow below "Discover Tallinn"
             flexibleSpace: FlexibleSpaceBar(
               titlePadding: EdgeInsets.fromLTRB(20, 0, 0, 15),
               title: Row(children: [
@@ -67,6 +69,14 @@ class Discovery extends StatelessWidget {
               ),
               // ),
               Features(),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 20, 0, 20),
+                child: Text(
+                  'Wolt Specials!',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ),
+              SpecialsBanner(),
               Container(
                 padding: EdgeInsets.only(left: 10),
                 child: Column(

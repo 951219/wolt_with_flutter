@@ -1,6 +1,6 @@
 // import 'package:wolt_with_flutter/datamodels/deliverytabitem.dart';
 import 'package:flutter/material.dart';
-import 'package:wolt_with_flutter/widgets/deliveryItems.dart';
+import 'package:wolt_with_flutter/widgets/delivery_tab__items.dart';
 
 class Delivery extends StatelessWidget {
   const Delivery({
