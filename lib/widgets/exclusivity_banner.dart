@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import '../constants.dart' as Constants;
 
-class Features extends StatelessWidget {
+class ExclusivityBanner extends StatelessWidget {
   List<_FeaturePhoto> _feature() {
     return [
       _FeaturePhoto(
@@ -45,10 +46,10 @@ class Features extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 200,
+        height: 210,
         child: ListView(
             scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.only(left: 20.0),
+            padding: Constants.PADDING_LTRB,
             children: _feature().map<Widget>((photo) {
               return _FeatureGridItem(featurePhoto: photo); //Feature(photo);
             }).toList()));
@@ -90,11 +91,11 @@ class _FeatureGridItem extends StatelessWidget {
                 ),
                 Text(featurePhoto.subtitle),
                 Container(
-                  margin: EdgeInsets.all(10),
+                  // margin: EdgeInsets.all(10),
                   child: Divider(
                     //TODO add a visible divider
                     // indent: 12,
-                    height: 2,
+                    height: 1,
                     color: Colors.black,
                   ),
                 ),

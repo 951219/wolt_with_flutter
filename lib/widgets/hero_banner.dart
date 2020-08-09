@@ -31,10 +31,10 @@ class HeroBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 285,
+        height: 275,
         child: ListView(
             scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.fromLTRB(20, 10, 0, 10),
             children: _bannerItems().map((photo) {
               return _HeroGridItem(featurePhoto: photo); //Feature(photo);
             }).toList()));
@@ -47,21 +47,6 @@ class _HeroBannerItem {
   final String title;
   final String subtitle;
 }
-
-// class _itemText extends StatelessWidget {
-//   const _FeatureText(this.text, this.fontSize);
-//   final String text;
-//   final double fontSize;
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: EdgeInsets.only(left: 14),
-//       child: Text(text,
-//           style:
-//               TextStyle(fontFamily: 'ConcertOne-Regular', fontSize: fontSize)),
-//     );
-//   }
-// }
 
 class _HeroGridItem extends StatelessWidget {
   _HeroGridItem({Key key, @required this.featurePhoto}) : super(key: key);
@@ -119,7 +104,7 @@ class _HeroGridItem extends StatelessWidget {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0)),
             elevation: 5,
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.only(right: 20),
           ),
         ]);
   }
