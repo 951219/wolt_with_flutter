@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widgets/exclusivity_banner.dart';
 import '../widgets/profile_favorites.dart';
+import '../widgets/order_again.dart';
 
 import '../constants.dart' as Constants;
 //TODO add Sliver maybe?
@@ -88,9 +88,7 @@ class Profile extends StatelessWidget {
             ],
           ),
         ),
-        //TODO restode list siia,
         ProfileFavorites(),
-        //TODO quick links siia - earn free deliveries, Enter a promo code, CS, Order history
         Padding(
           padding: Constants.PADDING_FOR_QUICKLINKS,
           child: Column(
@@ -186,6 +184,10 @@ class Profile extends StatelessWidget {
           ),
         ),
         //TODO resto list siia,
+        Padding(
+          padding: Constants.PADDING_LTRB,
+          child: OrderAgain(),
+        ),
         Padding(
           padding: Constants.PADDING_FOR_QUICKLINKS,
           child: Column(
