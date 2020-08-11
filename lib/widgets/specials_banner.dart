@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../constants.dart' as Constants;
 
 class SpecialsBanner extends StatelessWidget {
   List<_SpecialsBannerItem> _bannerItems() {
@@ -41,10 +42,10 @@ class SpecialsBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 170,
+        height: 175,
         child: ListView(
             scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.only(left: 20.0),
+            padding: Constants.PADDING_LTRB,
             children: _bannerItems().map((photo) {
               return _SpecialsGridItem(featurePhoto: photo); //Feature(photo);
             }).toList()));
@@ -66,21 +67,6 @@ class _SpecialsBannerItem {
   final double price;
   final double newPrice;
 }
-
-// class _itemText extends StatelessWidget {
-//   const _FeatureText(this.text, this.fontSize);
-//   final String text;
-//   final double fontSize;
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: EdgeInsets.only(left: 14),
-//       child: Text(text,
-//           style:
-//               TextStyle(fontFamily: 'ConcertOne-Regular', fontSize: fontSize)),
-//     );
-//   }
-// }
 
 class _SpecialsGridItem extends StatelessWidget {
   _SpecialsGridItem({Key key, @required this.featurePhoto}) : super(key: key);
@@ -139,7 +125,6 @@ class _SpecialsGridItem extends StatelessWidget {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5.0)),
             elevation: 2,
-            // margin: EdgeInsets.all(10),
           ),
         ]);
   }

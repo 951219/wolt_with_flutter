@@ -3,6 +3,8 @@ import 'package:wolt_with_flutter/widgets/exclusivity_banner.dart';
 import 'package:wolt_with_flutter/widgets/hero_banner.dart';
 import 'package:wolt_with_flutter/widgets/specials_banner.dart';
 
+import '../constants.dart' as Constants;
+
 class Discovery extends StatelessWidget {
   const Discovery({
     Key key,
@@ -21,7 +23,7 @@ class Discovery extends StatelessWidget {
             elevation: 02,
             // TODO remove the shadow below "Discover Tallinn"
             flexibleSpace: FlexibleSpaceBar(
-              titlePadding: EdgeInsets.fromLTRB(20, 0, 0, 15),
+              titlePadding: Constants.PADDING_LTRB,
               title: Row(children: [
                 Text('Discover ',
                     style: TextStyle(
@@ -42,14 +44,13 @@ class Discovery extends StatelessWidget {
             delegate: SliverChildListDelegate([
               HeroBanner(),
               Padding(
-                padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+                padding: Constants.PADDING_LTRB,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
                       'Only on Wolt!',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      style: Constants.LINKS_TITLE_STYLE,
                     ),
                     FlatButton(
                       shape: RoundedRectangleBorder(
@@ -67,65 +68,69 @@ class Discovery extends StatelessWidget {
                   ],
                 ),
               ),
-              // ),
-              Features(),
+              ExclusivityBanner(),
               Padding(
-                padding: const EdgeInsets.fromLTRB(20, 20, 0, 20),
+                padding: Constants.PADDING_LTRB,
                 child: Text(
                   'Wolt Specials!',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: Constants.LINKS_TITLE_STYLE,
                 ),
               ),
               SpecialsBanner(),
               Container(
-                padding: EdgeInsets.only(left: 10),
+                padding: Constants.PADDING_FOR_QUICKLINKS,
                 child: Column(
                   children: [
                     ListTile(
                       leading: Text(
                         'Quick links',
-                        style: TextStyle(
-                            // color: Colors.b,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: Constants.LINKS_TITLE_STYLE,
                       ),
                     ),
                     ListTile(
-                      leading: Text('Redeem Code'),
+                      leading: Text(
+                        'Redeem Code',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       trailing: Icon(Icons.navigate_next),
                       onTap: () => {},
                       dense: true,
                     ),
                     Divider(
-                      indent: 12,
+                      indent: 15,
                       height: 1,
                       color: Colors.grey[350],
                     ),
                     ListTile(
-                      leading: Text('Customer Support'),
+                      leading: Text(
+                        'Customer Support',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       trailing: Icon(Icons.navigate_next),
                       onTap: () => {},
                       dense: true,
                     ),
                     Divider(
-                      indent: 12,
+                      indent: 15,
                       height: 1,
                       color: Colors.grey[350],
                     ),
                     ListTile(
-                      leading: Text('Send a gift'),
+                      leading: Text(
+                        'Send a gift',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       trailing: Icon(Icons.navigate_next),
                       onTap: () => {},
                       dense: true,
                     ),
                     Divider(
-                      indent: 12,
+                      indent: 15,
                       height: 1,
                       color: Colors.grey[350],
                     ),
-                    Divider(
+                    SizedBox(
                       height: 100,
-                      color: Colors.white,
                     )
                   ],
                 ),
