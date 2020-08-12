@@ -111,7 +111,7 @@ class _FeatureGridItem extends StatelessWidget {
                 )
               ],
             ),
-            //TODO fix text positioning in exxclusivity banner
+            // TODO fix text positioning in the exclusivity banner/profile favorites
           )
         ],
       ),

@@ -20,7 +20,7 @@ class Discovery extends StatelessWidget {
             expandedHeight: 120,
             floating: false,
             pinned: true,
-            elevation: 02,
+            elevation: 2,
             // TODO remove the shadow below "Discover Tallinn"
             flexibleSpace: FlexibleSpaceBar(
               titlePadding: Constants.PADDING_LTRB,
@@ -50,7 +50,7 @@ class Discovery extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       'Only on Wolt!',
-                      style: Constants.LINKS_TITLE_STYLE,
+                      style: Constants.TITLE_STYLE,
                     ),
                     FlatButton(
                       shape: RoundedRectangleBorder(
@@ -73,7 +73,7 @@ class Discovery extends StatelessWidget {
                 padding: Constants.PADDING_LTRB,
                 child: Text(
                   'Wolt Specials!',
-                  style: Constants.LINKS_TITLE_STYLE,
+                  style: Constants.TITLE_STYLE,
                 ),
               ),
               SpecialsBanner(),
@@ -84,7 +84,7 @@ class Discovery extends StatelessWidget {
                     ListTile(
                       leading: Text(
                         'Quick links',
-                        style: Constants.LINKS_TITLE_STYLE,
+                        style: Constants.TITLE_STYLE,
                       ),
                     ),
                     ListTile(
