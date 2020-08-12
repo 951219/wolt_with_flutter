@@ -183,11 +183,7 @@ class Profile extends StatelessWidget {
             ],
           ),
         ),
-        //TODO resto list siia,
-        Padding(
-          padding: Constants.PADDING_LTRB,
-          child: OrderAgain(),
-        ),
+        OrderAgain(),
         Padding(
           padding: Constants.PADDING_FOR_QUICKLINKS,
           child: Column(

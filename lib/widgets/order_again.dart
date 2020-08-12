@@ -28,13 +28,16 @@ class OrderAgain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: 240,
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: _feature().map((photo) {
-              return _HistoryGridItem(featurePhoto: photo); //Feature(photo);
-            }).toList()));
+    return Padding(
+      padding: Constants.PADDING_LTRB,
+      child: Container(
+          height: 240,
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: _feature().map((photo) {
+                return _HistoryGridItem(featurePhoto: photo); //Feature(photo);
+              }).toList())),
+    );
   }
 }
 
