@@ -15,11 +15,22 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Wolt with Flutter',
-      // theme: ThemeData(
-      // primarySwatch: Colors.blue,
-      // ),
+      builder: (context, child) {
+        return ScrollConfiguration(
+          behavior: MyBehavior(),
+          child: child,
+        );
+      },
       home: Home(),
     );
+  }
+}
+
+class MyBehavior extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
   }
 }
 
@@ -38,8 +49,6 @@ class _HomeState extends State<Home> {
     Search(),
     Profile(),
   ];
-
-//TODO remove overcrolling animation globally
 
 //bottom bar
   @override
