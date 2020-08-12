@@ -5,6 +5,8 @@ import 'package:wolt_with_flutter/screens/nearby.dart';
 import 'package:wolt_with_flutter/screens/profile.dart';
 import 'package:wolt_with_flutter/screens/search.dart';
 
+//TODO make a restaurant DB so which will return all of the data that you might need
+
 void main() {
   runApp(MyApp());
 }

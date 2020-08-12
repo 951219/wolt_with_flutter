@@ -4,6 +4,7 @@ import '../constants.dart' as Constants;
 
 class OrderAgain extends StatelessWidget {
   List<_HistoryResto> _feature() {
+    //TODO add data about estimate, pricing, rating and an emoji
     return [
       _HistoryResto(
           imageURL:
