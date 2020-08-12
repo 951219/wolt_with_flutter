@@ -11,7 +11,7 @@ class Profile extends StatelessWidget {
     return SafeArea(
       child: CustomScrollView(slivers: [
         SliverAppBar(
-          title: Text('Profile', style: Constants.TITLE_STYLE),
+          // title: Text('Profile', style: Constants.TITLE_STYLE),
           actions: [
             Padding(
               padding: EdgeInsets.only(right: 20),
@@ -28,7 +28,6 @@ class Profile extends StatelessWidget {
           ],
           backgroundColor: Colors.white,
           expandedHeight: 120,
-          floating: false,
           pinned: true,
           elevation: 0,
           flexibleSpace: FlexibleSpaceBar(
@@ -47,17 +46,6 @@ class Profile extends StatelessWidget {
         SliverList(
             delegate: SliverChildListDelegate(
           [
-            // SizedBox(height: 15),
-            // Padding(
-            //   padding: Constants.PADDING_LTRB,
-            //   child: Text(
-            //     'Howdy Kenert!',
-            //     style: TextStyle(
-            //         color: Colors.black,
-            //         fontSize: 30,
-            //         fontWeight: FontWeight.bold),
-            //   ),
-            // ),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -311,3 +299,15 @@ class Profile extends StatelessWidget {
     );
   }
 }
+
+// SizedBox(height: 15),
+// Padding(
+//   padding: Constants.PADDING_LTRB,
+//   child: Text(
+//     'Howdy Kenert!',
+//     style: TextStyle(
+//         color: Colors.black,
+//         fontSize: 30,
+//         fontWeight: FontWeight.bold),
+//   ),
+// ),
