@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
 import 'package:wolt_with_flutter/services/restaurantservice.dart';
 
-//TODO convert to carousel so it would have a page indicator in the bottom and it would snap into place ,allowing scrolling one by one
-
 class HeroBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
         height: 275,
         child: ListView(
+            physics: PageScrollPhysics(),
             scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.fromLTRB(20, 10, 0, 10),
+            padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
             children: RestaurantService().getRestaurants().map((object) {
               return _HeroGridItem(restoObject: object); //Feature(photo);
             }).toList()));
@@ -92,7 +91,7 @@ class _HeroGridItem extends StatelessWidget {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0)),
             elevation: 5,
-            margin: EdgeInsets.only(right: 20),
+            margin: EdgeInsets.symmetric(horizontal: 20),
           ),
         ]);
   }
