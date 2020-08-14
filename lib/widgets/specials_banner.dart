@@ -84,8 +84,26 @@ class _SpecialsGridItem extends StatelessWidget {
             clipBehavior: Clip.antiAliasWithSaveLayer,
             child: Stack(
               children: <Widget>[
-                Image.network(featurePhoto.imageURL,
-                    width: 240, height: 145, fit: BoxFit.cover),
+                Container(
+                  width: 240,
+                  height: 145,
+                  child: Image.network(
+                    featurePhoto.imageURL,
+                    fit: BoxFit.cover,
+                    loadingBuilder: (BuildContext context, Widget child,
+                        ImageChunkEvent loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes
+                              : null,
+                        ),
+                      );
+                    },
+                  ),
+                ),
                 Positioned(
                     bottom: 10,
                     left: 10,

@@ -38,6 +38,24 @@ class _HistoryGridItem extends StatelessWidget {
               image: DecorationImage(
                   fit: BoxFit.cover, image: NetworkImage(restoObject.imageURL)),
             ),
+
+            //TODO refactor to add aloading icon
+            // child: Image.network(
+            //   restoObject.imageURL,
+            //   fit: BoxFit.cover,
+            //   loadingBuilder: (BuildContext context, Widget child,
+            //       ImageChunkEvent loadingProgress) {
+            //     if (loadingProgress == null) return child;
+            //     return Center(
+            //       child: CircularProgressIndicator(
+            //         value: loadingProgress.expectedTotalBytes != null
+            //             ? loadingProgress.cumulativeBytesLoaded /
+            //                 loadingProgress.expectedTotalBytes
+            //             : null,
+            //       ),
+            //     );
+            //   },
+            // ),
           ),
           SizedBox(
             width: 15,

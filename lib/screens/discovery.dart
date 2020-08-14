@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wolt_with_flutter/widgets/categories_banner.dart';
 import 'package:wolt_with_flutter/widgets/exclusivity_banner.dart';
 import 'package:wolt_with_flutter/widgets/hero_banner.dart';
 import 'package:wolt_with_flutter/widgets/specials_banner.dart';
@@ -77,6 +78,32 @@ class Discovery extends StatelessWidget {
                 ),
               ),
               SpecialsBanner(),
+              Padding(
+                padding: Constants.PADDING_LTRB,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      'Categories',
+                      style: Constants.TITLE_STYLE,
+                    ),
+                    FlatButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      color: Colors.blue[50],
+                      textColor: Colors.blue,
+                      onPressed: () => {},
+                      child: Text(
+                        'See all',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              CategoriesBanner(),
               Container(
                 padding: Constants.PADDING_FOR_QUICKLINKS,
                 child: Column(

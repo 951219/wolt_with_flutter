@@ -32,8 +32,26 @@ class _HeroGridItem extends StatelessWidget {
             clipBehavior: Clip.antiAliasWithSaveLayer,
             child: Stack(
               children: <Widget>[
-                Image.network(restoObject.imageURL,
-                    width: 415, height: 245, fit: BoxFit.cover),
+                Container(
+                  width: 415,
+                  height: 245,
+                  child: Image.network(
+                    restoObject.imageURL,
+                    fit: BoxFit.cover,
+                    loadingBuilder: (BuildContext context, Widget child,
+                        ImageChunkEvent loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes
+                              : null,
+                        ),
+                      );
+                    },
+                  ),
+                ),
                 Positioned(
                     bottom: 16,
                     left: 16,

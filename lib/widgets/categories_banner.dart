@@ -3,11 +3,13 @@ import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
 import 'package:wolt_with_flutter/services/restaurantservice.dart';
 import '../constants.dart' as Constants;
 
-class ExclusivityBanner extends StatelessWidget {
+//TODO categories data model and service
+
+class CategoriesBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 210,
+        height: 180,
         child: ListView(
             scrollDirection: Axis.horizontal,
             padding: Constants.PADDING_LTRB,
@@ -24,12 +26,12 @@ class _ExclusivityItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      semanticContainer: true,
+      // semanticContainer: true,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: Column(
         children: <Widget>[
           Container(
-            width: 160,
+            width: 120,
             height: 110,
             child: Image.network(
               restoObject.imageURL,
@@ -48,42 +50,18 @@ class _ExclusivityItem extends StatelessWidget {
               },
             ),
           ),
+
+          //TODO
           Container(
-            height: 70,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  restoObject.title,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Text(restoObject.subtitle),
-                Container(
-                  // margin: EdgeInsets.all(10),
-                  child: Divider(
-                    //TODO add a visible divider
-                    // indent: 12,
-                    height: 1,
-                    color: Colors.black,
-                  ),
-                ),
-                Row(
-                  children: [
-                    Text(restoObject.pricing),
-                    Text(' * '),
-                    Text('${restoObject.baseEstimate} min'),
-                    Text(' * '),
-                    Text(' :D '),
-                    Text(restoObject.rating.toString()),
-                  ],
-                )
-              ],
+            height: 40,
+            child: Text(
+              restoObject.title,
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            // TODO fix text positioning in the exclusivity banner/profile favorites
-          )
+          ),
         ],
       ),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+      // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
       elevation: 2,
       // margin: EdgeInsets.all(10),
     );
