@@ -1,36 +1,38 @@
 import 'package:flutter/material.dart';
 import '../constants.dart' as Constants;
 
+//TODO create a datamodel and a service for specials
+
 class SpecialsBanner extends StatelessWidget {
   List<_SpecialsBannerItem> _bannerItems() {
     return [
       _SpecialsBannerItem(
           imageURL:
               'https://previews.123rf.com/images/denisenkomax/denisenkomax1511/denisenkomax151100046/48743641-delicious-fresh-salami-pizza-served-on-wooden-table-ideal-for-advertisment.jpg',
-          title: 'Loud bird',
-          subtitle: 'sometimes the bird is loud',
+          title: 'Salami pizza',
+          subtitle: 'Delicious and fresh salami',
           discounted: true,
           price: 10.0,
           newPrice: 7.8),
       _SpecialsBannerItem(
           imageURL:
-              'https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_960_720.jpg',
-          title: 'Beatufil Cat',
-          subtitle: 'meow meow',
+              'https://cdn.pixabay.com/photo/2014/10/19/20/59/hamburger-494706_1280.jpg',
+          title: 'Delicious burger',
+          subtitle: 'yummy',
           discounted: false,
           price: 10.0,
           newPrice: 7.8),
       _SpecialsBannerItem(
           imageURL:
-              'https://cdn.pixabay.com/photo/2016/12/04/21/58/rabbit-1882699_960_720.jpg',
-          title: 'Rabit',
-          subtitle: 'She is cute',
+              'https://cdn.pixabay.com/photo/2017/03/31/10/56/waffles-2190961_1280.jpg',
+          title: 'Waffles',
+          subtitle: 'Perfect for breakfast',
           discounted: true,
           price: 12,
           newPrice: 5),
       _SpecialsBannerItem(
           imageURL:
-              'https://prod-wolt-venue-images-cdn.wolt.com/5c63f0857c0f51000b31e96b/e6d031d2ebfdcc85d3a9fc7497b90316',
+              'https://cdn.pixabay.com/photo/2016/11/06/23/31/breakfast-1804457_1280.jpg',
           title: 'Pizza',
           subtitle: 'nom nom',
           discounted: false,

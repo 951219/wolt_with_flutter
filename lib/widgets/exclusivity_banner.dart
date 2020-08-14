@@ -1,48 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
+import 'package:wolt_with_flutter/services/restaurantservice.dart';
 import '../constants.dart' as Constants;
 
 class ExclusivityBanner extends StatelessWidget {
-  List<_FeaturePhoto> _feature() {
-    return [
-      _FeaturePhoto(
-          imageURL:
-              'https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_960_720.jpg',
-          title: 'Beatufil Cat',
-          subtitle: 'I love cat',
-          featureString: 'Feature1'),
-      _FeaturePhoto(
-          imageURL:
-              'https://cdn.pixabay.com/photo/2011/09/27/18/52/sparrow-9950_960_720.jpg',
-          title: 'Loud bird',
-          subtitle: 'Small birdie',
-          featureString: 'Feature2'),
-      _FeaturePhoto(
-          imageURL:
-              'https://cdn.pixabay.com/photo/2016/12/04/21/58/rabbit-1882699_960_720.jpg',
-          title: 'Rabit',
-          subtitle: 'She is cute',
-          featureString: 'Feature3'),
-      _FeaturePhoto(
-          imageURL:
-              'https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_960_720.jpg',
-          title: 'Beatufil Cat',
-          subtitle: 'I love cat',
-          featureString: 'Feature1'),
-      _FeaturePhoto(
-          imageURL:
-              'https://cdn.pixabay.com/photo/2011/09/27/18/52/sparrow-9950_960_720.jpg',
-          title: 'Loud bird',
-          subtitle: 'new bird',
-          featureString: 'Feature2'),
-      _FeaturePhoto(
-          imageURL:
-              'https://cdn.pixabay.com/photo/2016/12/04/21/58/rabbit-1882699_960_720.jpg',
-          title: 'Rabit',
-          subtitle: 'She is cute',
-          featureString: 'Feature3'),
-    ];
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -50,24 +11,16 @@ class ExclusivityBanner extends StatelessWidget {
         child: ListView(
             scrollDirection: Axis.horizontal,
             padding: Constants.PADDING_LTRB,
-            children: _feature().map<Widget>((photo) {
-              return _FeatureGridItem(featurePhoto: photo); //Feature(photo);
+            children: RestaurantService().getRestaurants().map((object) {
+              return _ExclusivityItem(restoObject: object); //Feature(photo);
             }).toList()));
   }
 }
 
-class _FeaturePhoto {
-  _FeaturePhoto({this.imageURL, this.title, this.subtitle, this.featureString});
-  final String imageURL;
-  final String title;
-  final String subtitle;
-  final String featureString;
-}
+class _ExclusivityItem extends StatelessWidget {
+  _ExclusivityItem({Key key, @required this.restoObject}) : super(key: key);
 
-class _FeatureGridItem extends StatelessWidget {
-  _FeatureGridItem({Key key, @required this.featurePhoto}) : super(key: key);
-
-  final _FeaturePhoto featurePhoto;
+  final RestaurantObject restoObject;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -76,20 +29,19 @@ class _FeatureGridItem extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-            child: Image.network(featurePhoto.imageURL,
+            child: Image.network(restoObject.imageURL,
                 width: 160, height: 110, fit: BoxFit.cover),
           ),
           Container(
             height: 70,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  featurePhoto.title,
+                  restoObject.title,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                Text(featurePhoto.subtitle),
+                Text(restoObject.subtitle),
                 Container(
                   // margin: EdgeInsets.all(10),
                   child: Divider(
@@ -101,12 +53,12 @@ class _FeatureGridItem extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Text('\$'),
+                    Text(restoObject.pricing),
                     Text(' * '),
-                    Text('45 min'),
+                    Text('${restoObject.baseEstimate} min'),
                     Text(' * '),
                     Text(' :D '),
-                    Text('9.0'),
+                    Text(restoObject.rating.toString()),
                   ],
                 )
               ],

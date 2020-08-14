@@ -1,19 +1,18 @@
-// import 'package:location/location.dart';
-// import 'package:wolt_with_flutter/datamodels/user_location.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:wolt_with_flutter/datamodels/user_location.dart';
 
-// class LocationService {
-//   UserLocation _currentLocation;
+class LocationService {
+  Future<UserLocation> getCurrentLocation() async {
+    final position = await Geolocator()
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    return UserLocation(
+        latitude: position.latitude, longitude: position.longitude);
+  }
 
-//   var location = Location();
-
-//   Future<UserLocation> getLocation() async {
-//     try {
-//       var userLocation = await location.getLocation();
-//       _currentLocation = UserLocation(
-//           latitude: userLocation.latitude, longitude: userLocation.longitude);
-//     } catch (e) {
-//       print('Could not get the location: $e');
-//     }
-//     return _currentLocation;
-//   }
-// }
+// useful for the blue bar / address section
+  Future<List<Placemark>> getLocationJson() async {
+    List<Placemark> placemark =
+        await Geolocator().placemarkFromCoordinates(52.2165157, 6.9437819);
+    return placemark;
+  }
+}
