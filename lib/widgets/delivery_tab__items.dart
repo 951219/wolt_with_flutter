@@ -1,69 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
+import 'package:wolt_with_flutter/services/restaurantservice.dart';
 
 class DeliveryItems extends StatelessWidget {
-  List<_HeroBannerItem> _bannerItems() {
-    return [
-      _HeroBannerItem(
-          imageURL:
-              'https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_960_720.jpg',
-          title: 'Beatufil Cat',
-          subtitle: 'meow meow'),
-      _HeroBannerItem(
-          imageURL:
-              'https://cdn.pixabay.com/photo/2011/09/27/18/52/sparrow-9950_960_720.jpg',
-          title: 'Loud bird',
-          subtitle: 'sometimes the bird is loud'),
-      _HeroBannerItem(
-          imageURL:
-              'https://cdn.pixabay.com/photo/2016/12/04/21/58/rabbit-1882699_960_720.jpg',
-          title: 'Rabit',
-          subtitle: 'She is cute'),
-      _HeroBannerItem(
-          imageURL:
-              'https://prod-wolt-venue-images-cdn.wolt.com/5c63f0857c0f51000b31e96b/e6d031d2ebfdcc85d3a9fc7497b90316',
-          title: 'Pizza',
-          subtitle: 'nom nom'),
-      _HeroBannerItem(
-          imageURL:
-              'https://cdn.pixabay.com/photo/2011/09/27/18/52/sparrow-9950_960_720.jpg',
-          title: 'Loud bird',
-          subtitle: 'sometimes the bird is loud'),
-      _HeroBannerItem(
-          imageURL:
-              'https://cdn.pixabay.com/photo/2016/12/04/21/58/rabbit-1882699_960_720.jpg',
-          title: 'Rabit',
-          subtitle: 'She is cute'),
-      _HeroBannerItem(
-          imageURL:
-              'https://prod-wolt-venue-images-cdn.wolt.com/5c63f0857c0f51000b31e96b/e6d031d2ebfdcc85d3a9fc7497b90316',
-          title: 'Pizza',
-          subtitle: 'nom nom')
-    ];
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
         child: ListView(
             scrollDirection: Axis.vertical,
             padding: EdgeInsets.all(10.0),
-            children: _bannerItems().map<Widget>((photo) {
-              return _FeatureGridItem(featurePhoto: photo); //Feature(photo);
+            children: RestaurantService().getRestaurants().map((object) {
+              return _FeatureGridItem(restoObject: object); //Feature(photo);
             }).toList()));
   }
 }
 
-class _HeroBannerItem {
-  _HeroBannerItem({this.imageURL, this.title, this.subtitle});
-  final String imageURL;
-  final String title;
-  final String subtitle;
-}
-
 class _FeatureGridItem extends StatelessWidget {
-  _FeatureGridItem({Key key, @required this.featurePhoto}) : super(key: key);
+  _FeatureGridItem({Key key, @required this.restoObject}) : super(key: key);
 
-  final _HeroBannerItem featurePhoto;
+  final RestaurantObject restoObject;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -74,16 +29,16 @@ class _FeatureGridItem extends StatelessWidget {
             clipBehavior: Clip.antiAliasWithSaveLayer,
             child: Stack(
               children: <Widget>[
-                Image.network(featurePhoto.imageURL,
+                Image.network(restoObject.imageURL,
                     width: 415, height: 245, fit: BoxFit.cover),
                 Positioned(
                     bottom: 16,
                     left: 16,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        //TODO text alla vasakule
                         Text(
-                          featurePhoto.title,
+                          restoObject.title,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 25,
@@ -91,7 +46,7 @@ class _FeatureGridItem extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          featurePhoto.subtitle,
+                          restoObject.subtitle,
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,

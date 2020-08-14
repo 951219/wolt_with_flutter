@@ -1,32 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
+import 'package:wolt_with_flutter/services/restaurantservice.dart';
 
 import '../constants.dart' as Constants;
 
 class OrderAgain extends StatelessWidget {
-  List<_HistoryResto> _feature() {
-    //TODO add data about estimate, pricing, rating and an emoji
-    return [
-      _HistoryResto(
-          imageURL:
-              'https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_960_720.jpg',
-          title: 'Beatufil Cat',
-          subtitle: 'I love cat',
-          featureString: 'Feature1'),
-      _HistoryResto(
-          imageURL:
-              'https://cdn.pixabay.com/photo/2011/09/27/18/52/sparrow-9950_960_720.jpg',
-          title: 'Loud bird',
-          subtitle: 'Small birdie',
-          featureString: 'Feature2'),
-      _HistoryResto(
-          imageURL:
-              'https://cdn.pixabay.com/photo/2016/12/04/21/58/rabbit-1882699_960_720.jpg',
-          title: 'Rabit',
-          subtitle: 'She is cute',
-          featureString: 'Feature3')
-    ];
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -35,17 +13,18 @@ class OrderAgain extends StatelessWidget {
           height: 240,
           child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: _feature().map((photo) {
-                return _HistoryGridItem(featurePhoto: photo); //Feature(photo);
+              children:
+                  RestaurantService().getNumberOfRestaurants(3).map((object) {
+                return _HistoryGridItem(restoObject: object); //Feature(photo);
               }).toList())),
     );
   }
 }
 
 class _HistoryGridItem extends StatelessWidget {
-  _HistoryGridItem({Key key, @required this.featurePhoto}) : super(key: key);
+  _HistoryGridItem({Key key, @required this.restoObject}) : super(key: key);
 
-  final _HistoryResto featurePhoto;
+  final RestaurantObject restoObject;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -57,8 +36,7 @@ class _HistoryGridItem extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(8.0)),
               image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(featurePhoto.imageURL)),
+                  fit: BoxFit.cover, image: NetworkImage(restoObject.imageURL)),
             ),
           ),
           SizedBox(
@@ -71,18 +49,18 @@ class _HistoryGridItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  featurePhoto.title,
+                  restoObject.title,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                Text(featurePhoto.subtitle),
+                Text(restoObject.subtitle),
                 Row(
                   children: [
-                    Text('\$'),
+                    Text(restoObject.pricing),
                     Text(' * '),
-                    Text('45 min'),
+                    Text('${restoObject.baseEstimate} min'),
                     Text(' * '),
                     Text(' :D '),
-                    Text('9.0'),
+                    Text(restoObject.rating.toString()),
                   ],
                 )
               ],
@@ -94,12 +72,4 @@ class _HistoryGridItem extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 10),
     );
   }
-}
-
-class _HistoryResto {
-  _HistoryResto({this.imageURL, this.title, this.subtitle, this.featureString});
-  final String imageURL;
-  final String title;
-  final String subtitle;
-  final String featureString;
 }

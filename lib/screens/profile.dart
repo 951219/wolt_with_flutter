@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/widgets/profile_page_header.dart';
 import '../constants.dart' as Constants;
+import '../userdata.dart' as Userdata;
 import '../widgets/order_again.dart';
 import '../widgets/profile_favorites.dart';
 
@@ -25,7 +26,7 @@ class Profile extends StatelessWidget {
                 Padding(
                   padding: Constants.PADDING_LTRB,
                   child: Text(
-                    'Kenert Karu',
+                    '${Userdata.firstName} ${Userdata.lastName}',
                     style: Constants.TITLE_STYLE,
                   ),
                 ),
@@ -36,21 +37,21 @@ class Profile extends StatelessWidget {
                       children: [
                         Column(
                           children: [
-                            Text('50+',
+                            Text('${Userdata.orderAmount}+',
                                 style: TextStyle(fontWeight: FontWeight.bold)),
                             Text('orders'),
                           ],
                         ),
                         Column(
                           children: [
-                            Text('0',
+                            Text(Userdata.tokenAmount.toString(),
                                 style: TextStyle(fontWeight: FontWeight.bold)),
                             Text('tokens'),
                           ],
                         ),
                         Column(
                           children: [
-                            Text('2.0',
+                            Text(Userdata.creditsLeft.toString(),
                                 style: TextStyle(fontWeight: FontWeight.bold)),
                             Text('credits'),
                           ],
@@ -65,7 +66,7 @@ class Profile extends StatelessWidget {
               padding: Constants.PADDING_LTRB,
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage: AssetImage('images/kenert.jpg'),
+                backgroundImage: AssetImage(Userdata.imageUrl),
               ),
             )
           ]),
