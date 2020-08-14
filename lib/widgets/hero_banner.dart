@@ -15,6 +15,8 @@ class HeroBanner extends StatelessWidget {
               return _HeroGridItem(restoObject: object); //Feature(photo);
             }).toList()));
   }
+
+  //TODO can add ScrollBar()
 }
 
 class _HeroGridItem extends StatelessWidget {

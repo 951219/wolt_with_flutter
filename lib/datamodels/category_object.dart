@@ -1,6 +1,7 @@
 class CategoryObject {
-  final String title;
-  final int numberOfPlaces;
+  String title;
+  int numberOfVenues;
+  String imgUrl;
 
-  CategoryObject({this.title, this.numberOfPlaces});
+  CategoryObject({this.title, this.numberOfVenues, this.imgUrl});
 }
