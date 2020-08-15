@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
-import 'package:wolt_with_flutter/services/restaurantservice.dart';
+import 'package:wolt_with_flutter/services/restaurant_service.dart';
 
 class HeroBanner extends StatelessWidget {
   @override
@@ -15,6 +15,8 @@ class HeroBanner extends StatelessWidget {
               return _HeroGridItem(restoObject: object); //Feature(photo);
             }).toList()));
   }
+
+  //TODO can add ScrollBar()
 }
 
 class _HeroGridItem extends StatelessWidget {

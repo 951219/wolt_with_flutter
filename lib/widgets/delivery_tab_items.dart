@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
-import 'package:wolt_with_flutter/services/restaurantservice.dart';
+import 'package:wolt_with_flutter/services/restaurant_service.dart';
 
 class DeliveryItems extends StatelessWidget {
   @override
@@ -16,6 +16,9 @@ class DeliveryItems extends StatelessWidget {
 }
 
 //TODO Building the biggest card with a large picture, and details in the bottom part
+
+//TODO TAG UUS! Wolt only to top left corner
+//TODO Heart icon to to right corner
 
 class _FeatureGridItem extends StatelessWidget {
   _FeatureGridItem({Key key, @required this.restoObject}) : super(key: key);

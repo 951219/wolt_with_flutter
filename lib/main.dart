@@ -50,7 +50,6 @@ class _HomeState extends State<Home> {
     Profile(),
   ];
 
-//bottom bar
   @override
   Widget build(BuildContext context) {
     return Scaffold(
