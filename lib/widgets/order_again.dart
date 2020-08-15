@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
-import 'package:wolt_with_flutter/services/restaurantservice.dart';
+import 'package:wolt_with_flutter/services/restaurant_service.dart';
 
 import '../constants.dart' as Constants;
 

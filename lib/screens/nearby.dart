@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import 'package:wolt_with_flutter/datamodels/user_location.dart';
-import 'package:wolt_with_flutter/services/locationservice.dart';
+import 'package:wolt_with_flutter/services/location_service.dart';
 
 class Nearby extends StatefulWidget {
   @override
