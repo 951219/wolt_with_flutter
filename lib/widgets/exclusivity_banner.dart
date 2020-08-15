@@ -70,10 +70,13 @@ class _ExclusivityItem extends StatelessWidget {
                 Row(
                   children: [
                     Text(restoObject.pricing),
-                    Text(' * '),
+                    Text(' • '),
                     Text('${restoObject.baseEstimate} min'),
-                    Text(' * '),
-                    Text(' :D '),
+                    Text(' • '),
+                    Container(
+                        child: restoObject.rating >= 9
+                            ? Text(' 😍 ')
+                            : Text(' 😀 ')),
                     Text(restoObject.rating.toString()),
                   ],
                 )

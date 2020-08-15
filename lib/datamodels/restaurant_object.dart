@@ -18,9 +18,3 @@ class RestaurantObject {
       this.baseEstimate,
       this.id});
 }
-
-// Hero banner done
-// Exclusivity banner done
-// profile favorites done
-// profile order again done
-// delivery tab done
