@@ -54,7 +54,7 @@ class _NearbyState extends State<Nearby> {
                 ),
               ),
               Container(
-                //TODO listview with card for restaurants
+                //TODO listview with card for restaurants - uses the same cards as delivery tab but iwhtout estimated time  and with approx distance from your location
                 height: 400,
                 child: Center(
                   child: Text('Restaurant List'),
