@@ -190,7 +190,7 @@ class Profile extends StatelessWidget {
               ],
             ),
           ),
-          OrderAgain(),
+          HistoryOrders(howMany: 3),
           Padding(
             padding: Constants.PADDING_FOR_QUICKLINKS,
             child: Column(

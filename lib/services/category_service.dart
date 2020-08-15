@@ -30,10 +30,6 @@ class CategoryService {
         imgUrl:
             'https://www.budgetbytes.com/wp-content/uploads/2013/07/Creamy-Spinach-Tomato-Pasta-bowl-500x375.jpg'),
     CategoryObject(
-        title: 'Wings',
-        imgUrl:
-            'https://www.macheesmo.com/wp-content/uploads/2015/03/Sticky-Chicken-Wings-hero.jpg'),
-    CategoryObject(
         title: 'Dessert',
         imgUrl:
             'https://img.taste.com.au/gq02jKp2/taste/2018/11/dessert-platter-144036-1.jpg'),

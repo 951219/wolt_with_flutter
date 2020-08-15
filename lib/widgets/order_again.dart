@@ -2,21 +2,42 @@ import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/restaurantcards/smallest_restaurant_card.dart';
 import 'package:wolt_with_flutter/services/restaurant_service.dart';
 
-import '../constants.dart' as Constants;
+import '../constants.dart' as constants;
 
-class OrderAgain extends StatelessWidget {
+class HistoryOrders extends StatelessWidget {
+  HistoryOrders(
+      {this.howMany,
+      this.showDeliveryPrice = false,
+      this.addBottomLine = false});
+  final int howMany;
+  final bool showDeliveryPrice;
+  final bool addBottomLine;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: Constants.PADDING_LTRB,
+      padding: constants.PADDING_LTRB,
       child: Container(
-          height: 240,
           child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children:
-                  RestaurantService().getNumberOfRestaurants(3).map((object) {
-                return SmallestRestaurantCard(restoObject: object);
-              }).toList())),
+        mainAxisAlignment: MainAxisAlignment.start,
+        children:
+            RestaurantService().getNumberOfRestaurants(howMany).map((object) {
+          return Column(
+            children: [
+              SmallestRestaurantCard(
+                  restoObject: object, showDeliveryPrice: showDeliveryPrice),
+              addBottomLine
+                  ? Divider(
+                      endIndent: 20,
+                      indent: 90,
+                      height: 1,
+                      thickness: 1,
+                    )
+                  : Container()
+            ],
+          );
+        }).toList(),
+      )),
     );
   }
 }

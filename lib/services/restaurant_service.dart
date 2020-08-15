@@ -9,7 +9,7 @@ class RestaurantService {
             'https://cdn.pixabay.com/photo/2017/02/15/10/39/salad-2068220_1280.jpg',
         baseDeliveryPrice: 1.9,
         rating: 8.8,
-        pricing: '\$\$',
+        pricing: '€€',
         baseEstimate: 40),
     RestaurantObject(
       title: 'Pizza plaza',
@@ -18,7 +18,7 @@ class RestaurantService {
           'https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032_1280.jpg',
       baseDeliveryPrice: 1.9,
       rating: 9.5,
-      pricing: '\$',
+      pricing: '€',
       baseEstimate: 20,
     ),
     RestaurantObject(
@@ -28,7 +28,7 @@ class RestaurantService {
             'https://cdn.pixabay.com/photo/2017/05/07/08/56/pancakes-2291908_1280.jpg',
         baseDeliveryPrice: 1.9,
         rating: 8.4,
-        pricing: '\$\$\$',
+        pricing: '€€€',
         baseEstimate: 45),
     RestaurantObject(
         title: 'Pizza',
@@ -37,7 +37,7 @@ class RestaurantService {
             'https://cdn.pixabay.com/photo/2017/03/23/19/57/asparagus-2169305_1280.jpg',
         baseDeliveryPrice: 1.9,
         rating: 9.2,
-        pricing: '\$\$',
+        pricing: '€€',
         baseEstimate: 30),
     RestaurantObject(
         title: 'Burger king',
@@ -46,7 +46,7 @@ class RestaurantService {
             'https://cdn.pixabay.com/photo/2017/03/23/19/57/asparagus-2169305_1280.jpg',
         baseDeliveryPrice: 1.9,
         rating: 9.2,
-        pricing: '\$\$',
+        pricing: '€€',
         baseEstimate: 30),
     RestaurantObject(
         title: 'Sushiplaza',
@@ -55,8 +55,17 @@ class RestaurantService {
             'https://cdn.pixabay.com/photo/2017/03/23/19/57/asparagus-2169305_1280.jpg',
         baseDeliveryPrice: 1.9,
         rating: 9.2,
-        pricing: '\$\$',
-        baseEstimate: 30)
+        pricing: '€€',
+        baseEstimate: 30),
+    RestaurantObject(
+        title: 'Cafe Boy',
+        subtitle: 'yay',
+        imageURL:
+            'https://cdn.pixabay.com/photo/2017/05/07/08/56/pancakes-2291908_1280.jpg',
+        baseDeliveryPrice: 1.9,
+        rating: 7.9,
+        pricing: '€',
+        baseEstimate: 45),
   ];
 
 // brekkie https://cdn.pixabay.com/photo/2016/11/06/23/31/breakfast-1804457_1280.jpg
@@ -78,6 +87,6 @@ class RestaurantService {
   }
 
   List<String> getRestaurantNames() {
-    return _restoList.map((e) => e.title).toList();
+    return _restoList.map((e) => e.title.toLowerCase()).toList();
   }
 }

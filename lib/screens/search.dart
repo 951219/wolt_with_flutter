@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
+import 'package:wolt_with_flutter/restaurantcards/smallest_restaurant_card.dart';
+import 'package:wolt_with_flutter/services/category_service.dart';
 import 'package:wolt_with_flutter/services/restaurant_service.dart';
-
-//TODO Search page
+import 'package:wolt_with_flutter/widgets/order_again.dart';
+import '../constants.dart' as constants;
 
 class Search extends StatefulWidget {
   const Search({Key key}) : super(key: key);
@@ -13,6 +15,7 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   List<String> nameList = RestaurantService().getRestaurantNames();
+
   _SearchAppBarDelegate _searchDelegate;
 
   @override
@@ -34,14 +37,12 @@ class _SearchState extends State<Search> {
                 Icons.search,
               ),
               onPressed: () {
-                //! startSearch
                 showSearchPage(context, _searchDelegate);
               },
             ),
           ),
           title: InkWell(
             onTap: () {
-              //! startSearch
               showSearchPage(context, _searchDelegate);
             },
             child: Padding(
@@ -53,30 +54,47 @@ class _SearchState extends State<Search> {
             ),
           ),
         ),
-        body:
-            Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+        body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          SizedBox(height: 20),
           Center(
+            child: Wrap(
+                alignment: WrapAlignment.center,
+                children: CategoryService().getCategories().map((object) {
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 4),
+                    child: FlatButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      color: Colors.blue[400],
+                      textColor: Colors.white,
+                      onPressed: () => {
+                        //TODO implement tag based search
+                        showSearchPage(context, _searchDelegate)
+                      },
+                      child: Text(
+                        object.title,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  );
+                }).toList()),
+          ),
+          Padding(
+            padding: constants.PADDING_LTRB,
             child: Text(
-              'Category buttons',
+              'My recent orders',
+              style: constants.TITLE_STYLE,
             ),
           ),
           Center(
-            child: Text(
-              'History',
-            ),
-          )
+              child: HistoryOrders(
+                  howMany: 5, showDeliveryPrice: true, addBottomLine: true)),
         ]));
   }
 
   void showSearchPage(
       BuildContext context, _SearchAppBarDelegate searchDelegate) async {
-    final String selected =
-        await showSearch<String>(context: context, delegate: searchDelegate);
-
-    if (selected != null) {
-      Scaffold.of(context)
-          .showSnackBar(SnackBar(content: Text('You chose: $selected')));
-    }
+    await showSearch<String>(context: context, delegate: searchDelegate);
   }
 }
 
@@ -84,7 +102,6 @@ class _SearchAppBarDelegate extends SearchDelegate<String> {
   final List<String> _words;
 
   _SearchAppBarDelegate(List<String> words) : _words = words;
-  // super();
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -117,22 +134,7 @@ class _SearchAppBarDelegate extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text('You chose:'),
-            GestureDetector(
-                onTap: () {
-                  this.close(context, this.query);
-                },
-                child: Text(this.query)),
-          ],
-        ),
-      ),
-    );
+    return Container();
   }
 
   @override
@@ -165,12 +167,26 @@ class _WordSuggestionList extends StatelessWidget {
         itemCount: suggestions.length,
         itemBuilder: (BuildContext context, int i) {
           final String suggestion = suggestions[i];
-          // List<RestaurantObject> restod = restaurants.where((element) => element.title==suggestion).toList();
-          return ListTile(
-            title: Text(suggestion),
-            onTap: () {
-              onSelected(suggestion);
-            },
+          List<RestaurantObject> restod = restaurants
+              .where((element) => (element.title.toLowerCase())
+                  .contains(suggestion.toLowerCase()))
+              .toList();
+          return InkWell(
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(20, 8, 20, 0),
+                  child: SmallestRestaurantCard(
+                      restoObject: restod[0], showDeliveryPrice: true),
+                ),
+                Divider(
+                  endIndent: 20,
+                  indent: 90,
+                  height: 1,
+                  thickness: 1,
+                ),
+              ],
+            ),
           );
         });
   }
