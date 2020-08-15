@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
 import 'package:wolt_with_flutter/services/restaurant_service.dart';
-import '../constants.dart' as constants;
 
 //TODO Search page
 
@@ -53,25 +52,20 @@ class _SearchState extends State<Search> {
               ),
             ),
           ),
-          actions: [
-            Padding(
-              padding: EdgeInsets.only(right: 10),
-              child: IconButton(
-                icon: Icon(Icons.close),
-                color: Colors.blue,
-                onPressed: () {
-                  //! startSearch
-                  showSearchPage(context, _searchDelegate);
-                },
-              ),
-            )
-          ],
         ),
-        body: Center(
-          child: Text(
-            nameList.toString(),
+        body:
+            Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+          Center(
+            child: Text(
+              'Category buttons',
+            ),
           ),
-        ));
+          Center(
+            child: Text(
+              'History',
+            ),
+          )
+        ]));
   }
 
   void showSearchPage(
@@ -89,9 +83,8 @@ class _SearchState extends State<Search> {
 class _SearchAppBarDelegate extends SearchDelegate<String> {
   final List<String> _words;
 
-  _SearchAppBarDelegate(List<String> words)
-      : _words = words,
-        super();
+  _SearchAppBarDelegate(List<String> words) : _words = words;
+  // super();
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -99,8 +92,12 @@ class _SearchAppBarDelegate extends SearchDelegate<String> {
       IconButton(
           icon: Icon(Icons.clear),
           onPressed: () {
-            query = '';
-            showSuggestions(context);
+            if (query.isEmpty) {
+              this.close(context, null);
+            } else {
+              query = '';
+              showSuggestions(context);
+            }
           }),
     ];
   }
@@ -108,7 +105,10 @@ class _SearchAppBarDelegate extends SearchDelegate<String> {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.backup),
+      icon: Padding(
+        padding: EdgeInsets.only(left: 10),
+        child: Icon(Icons.arrow_back),
+      ),
       onPressed: () {
         this.close(context, null);
       },
@@ -138,7 +138,7 @@ class _SearchAppBarDelegate extends SearchDelegate<String> {
   @override
   Widget buildSuggestions(BuildContext context) {
     final Iterable<String> suggestions =
-        _words.where((word) => word.startsWith(query));
+        _words.where((word) => word.contains(query));
 
     return _WordSuggestionList(
         query: this.query,
