@@ -3,8 +3,8 @@ import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
 class RestaurantService {
   List<RestaurantObject> _restoList = [
     RestaurantObject(
-        title: 'FROM service',
-        subtitle: 'meow meow',
+        title: 'Test Restaurant',
+        subtitle: 'We have great food',
         imageURL:
             'https://cdn.pixabay.com/photo/2017/02/15/10/39/salad-2068220_1280.jpg',
         baseDeliveryPrice: 1.9,
@@ -12,8 +12,8 @@ class RestaurantService {
         pricing: '\$\$',
         baseEstimate: 40),
     RestaurantObject(
-      title: 'Loud bird',
-      subtitle: 'the bird is loud',
+      title: 'Pizza plaza',
+      subtitle: 'Best pizza in town',
       imageURL:
           'https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032_1280.jpg',
       baseDeliveryPrice: 1.9,
@@ -22,8 +22,8 @@ class RestaurantService {
       baseEstimate: 20,
     ),
     RestaurantObject(
-        title: 'Rabit',
-        subtitle: 'She is cute',
+        title: 'Cafe',
+        subtitle: '',
         imageURL:
             'https://cdn.pixabay.com/photo/2017/05/07/08/56/pancakes-2291908_1280.jpg',
         baseDeliveryPrice: 1.9,
@@ -33,6 +33,24 @@ class RestaurantService {
     RestaurantObject(
         title: 'Pizza',
         subtitle: 'nom nom',
+        imageURL:
+            'https://cdn.pixabay.com/photo/2017/03/23/19/57/asparagus-2169305_1280.jpg',
+        baseDeliveryPrice: 1.9,
+        rating: 9.2,
+        pricing: '\$\$',
+        baseEstimate: 30),
+    RestaurantObject(
+        title: 'Burger king',
+        subtitle: 'nom nom',
+        imageURL:
+            'https://cdn.pixabay.com/photo/2017/03/23/19/57/asparagus-2169305_1280.jpg',
+        baseDeliveryPrice: 1.9,
+        rating: 9.2,
+        pricing: '\$\$',
+        baseEstimate: 30),
+    RestaurantObject(
+        title: 'Sushiplaza',
+        subtitle: 'oof',
         imageURL:
             'https://cdn.pixabay.com/photo/2017/03/23/19/57/asparagus-2169305_1280.jpg',
         baseDeliveryPrice: 1.9,
@@ -57,5 +75,9 @@ class RestaurantService {
 
   List<RestaurantObject> getNumberOfRestaurants(int number) {
     return _restoList.sublist(0, number);
+  }
+
+  List<String> getRestaurantNames() {
+    return _restoList.map((e) => e.title).toList();
   }
 }
