@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:wolt_with_flutter/widgets/m_builder.dart';
 import 'package:wolt_with_flutter/widgets/profile_page_header.dart';
 import '../constants.dart' as constants;
 import '../userdata.dart' as userdata;
-import '../widgets/order_again.dart';
-import '../widgets/profile_favorites.dart';
+import '../widgets/xs_builder.dart';
 
 class Profile extends StatelessWidget {
   @override
@@ -95,7 +95,7 @@ class Profile extends StatelessWidget {
               ],
             ),
           ),
-          ProfileFavorites(),
+          MBuider(),
           Padding(
             padding: constants.PADDING_FOR_QUICKLINKS,
             child: Column(
@@ -190,7 +190,7 @@ class Profile extends StatelessWidget {
               ],
             ),
           ),
-          HistoryOrders(howMany: 3),
+          XSBuilder(howMany: 3),
           Padding(
             padding: constants.PADDING_FOR_QUICKLINKS,
             child: Column(

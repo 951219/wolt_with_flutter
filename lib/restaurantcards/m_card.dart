@@ -1,24 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
-import 'package:wolt_with_flutter/services/restaurant_service.dart';
-import '../constants.dart' as constants;
 
-class ExclusivityBanner extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        height: 210,
-        child: ListView(
-            scrollDirection: Axis.horizontal,
-            padding: constants.PADDING_LTRB,
-            children: RestaurantService().getRestaurants().map((object) {
-              return _ExclusivityItem(restoObject: object); //Feature(photo);
-            }).toList()));
-  }
-}
-
-class _ExclusivityItem extends StatelessWidget {
-  _ExclusivityItem({Key key, @required this.restoObject}) : super(key: key);
+class MCard extends StatelessWidget {
+  MCard({Key key, @required this.restoObject}) : super(key: key);
 
   final RestaurantObject restoObject;
   @override

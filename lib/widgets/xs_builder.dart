@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:wolt_with_flutter/restaurantcards/smallest_restaurant_card.dart';
+import 'package:wolt_with_flutter/restaurantcards/xs_card.dart';
 import 'package:wolt_with_flutter/services/restaurant_service.dart';
 
 import '../constants.dart' as constants;
 
-class HistoryOrders extends StatelessWidget {
-  HistoryOrders(
+class XSBuilder extends StatelessWidget {
+  XSBuilder(
       {this.howMany,
       this.showDeliveryPrice = false,
       this.addBottomLine = false});
@@ -24,16 +24,10 @@ class HistoryOrders extends StatelessWidget {
             RestaurantService().getNumberOfRestaurants(howMany).map((object) {
           return Column(
             children: [
-              SmallestRestaurantCard(
-                  restoObject: object, showDeliveryPrice: showDeliveryPrice),
-              addBottomLine
-                  ? Divider(
-                      endIndent: 20,
-                      indent: 90,
-                      height: 1,
-                      thickness: 1,
-                    )
-                  : Container()
+              XSCard(
+                  restoObject: object,
+                  showDeliveryPrice: showDeliveryPrice,
+                  showBottomLine: addBottomLine),
             ],
           );
         }).toList(),

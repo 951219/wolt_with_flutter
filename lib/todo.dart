@@ -1,6 +1,5 @@
 // TODO networkimages to assets globally
-//TODO refactor so restaurant cards are in 1 folder smalles/small/medium/big/biggest
-/* // TODO add inkWell and routebuilder to each restaurant card
+/* // TODO add inkWell and routebuilder to each card
 InkWell(child: child, onTap: () {
         Navigator.push(
             context,

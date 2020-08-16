@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wolt_with_flutter/widgets/categories_banner.dart';
-import 'package:wolt_with_flutter/widgets/exclusivity_banner.dart';
-import 'package:wolt_with_flutter/widgets/hero_banner.dart';
-import 'package:wolt_with_flutter/widgets/specials_banner.dart';
+import 'package:wolt_with_flutter/widgets/s_builder.dart';
+import 'package:wolt_with_flutter/widgets/m_builder.dart';
+import 'package:wolt_with_flutter/widgets/xl_builder.dart';
+import 'package:wolt_with_flutter/widgets/l_builder.dart';
 
 import '../constants.dart' as constants;
 
@@ -43,7 +43,7 @@ class Discovery extends StatelessWidget {
           ),
           SliverList(
             delegate: SliverChildListDelegate([
-              HeroBanner(),
+              XLBuilder(),
               Padding(
                 padding: constants.PADDING_LTRB,
                 child: Row(
@@ -69,7 +69,7 @@ class Discovery extends StatelessWidget {
                   ],
                 ),
               ),
-              ExclusivityBanner(),
+              MBuider(),
               Padding(
                 padding: constants.PADDING_LTRB,
                 child: Text(
@@ -77,7 +77,7 @@ class Discovery extends StatelessWidget {
                   style: constants.TITLE_STYLE,
                 ),
               ),
-              SpecialsBanner(),
+              LBuilder(),
               Padding(
                 padding: constants.PADDING_LTRB,
                 child: Row(
@@ -103,7 +103,7 @@ class Discovery extends StatelessWidget {
                   ],
                 ),
               ),
-              CategoriesBanner(),
+              SBuilder(),
               Container(
                 padding: constants.PADDING_FOR_QUICKLINKS,
                 child: Column(

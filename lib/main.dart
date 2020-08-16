@@ -40,7 +40,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _currentIndex = 3;
+  int _currentIndex = 0;
 
   final tabs = [
     Discovery(),
@@ -82,6 +82,7 @@ class _HomeState extends State<Home> {
           ],
           onTap: (index) {
             setState(() {
+              print(tabs[index].toString());
               _currentIndex = index;
             });
           }),

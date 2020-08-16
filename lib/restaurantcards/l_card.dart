@@ -1,28 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
-import 'package:wolt_with_flutter/services/restaurant_service.dart';
+import 'package:wolt_with_flutter/datamodels/special_object.dart';
 
-class HeroBanner extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        height: 275,
-        child: ListView(
-            physics: PageScrollPhysics(),
-            scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-            children: RestaurantService().getRestaurants().map((object) {
-              return _HeroGridItem(restoObject: object); //Feature(photo);
-            }).toList()));
-  }
+class LCard extends StatelessWidget {
+  LCard({Key key, @required this.specialObject}) : super(key: key);
 
-  //TODO can add ScrollBar()
-}
-
-class _HeroGridItem extends StatelessWidget {
-  _HeroGridItem({Key key, @required this.restoObject}) : super(key: key);
-
-  final RestaurantObject restoObject;
+  final SpecialObject specialObject;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -34,10 +16,10 @@ class _HeroGridItem extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 Container(
-                  width: 415,
-                  height: 245,
+                  width: 240,
+                  height: 145,
                   child: Image.network(
-                    restoObject.imageURL,
+                    specialObject.imageURL,
                     fit: BoxFit.cover,
                     loadingBuilder: (BuildContext context, Widget child,
                         ImageChunkEvent loadingProgress) {
@@ -54,13 +36,13 @@ class _HeroGridItem extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                    bottom: 16,
-                    left: 16,
+                    bottom: 10,
+                    left: 10,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          restoObject.title,
+                          specialObject.title,
                           style: TextStyle(
                             shadows: [
                               Shadow(
@@ -69,12 +51,12 @@ class _HeroGridItem extends StatelessWidget {
                               )
                             ],
                             color: Colors.white,
-                            fontSize: 25,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
-                          restoObject.subtitle,
+                          specialObject.subtitle,
                           style: TextStyle(
                               shadows: [
                                 Shadow(
@@ -83,17 +65,17 @@ class _HeroGridItem extends StatelessWidget {
                                 )
                               ],
                               color: Colors.white,
-                              fontSize: 20,
+                              fontSize: 15,
                               fontWeight: FontWeight.bold),
                         ),
                       ],
                     ))
+                //TODO add red container for new price
               ],
             ),
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0)),
-            elevation: 5,
-            margin: EdgeInsets.symmetric(horizontal: 20),
+                borderRadius: BorderRadius.circular(5.0)),
+            elevation: 2,
           ),
         ]);
   }

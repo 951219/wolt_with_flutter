@@ -1,29 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/category_object.dart';
-import 'package:wolt_with_flutter/services/category_service.dart';
-import '../constants.dart' as constants;
-import 'dart:math' as Math;
 
-//TODO categories data model and service
-
-class CategoriesBanner extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        height: 180,
-        child: ListView(
-            scrollDirection: Axis.horizontal,
-            padding: constants.PADDING_LTRB,
-            children: CategoryService().getCategories().map((object) {
-              object.numberOfVenues = Math.Random().nextInt(15) + 1;
-              return _CategoryGridItem(
-                  categoryObject: object); //Feature(photo);
-            }).toList()));
-  }
-}
-
-class _CategoryGridItem extends StatelessWidget {
-  _CategoryGridItem({Key key, @required this.categoryObject}) : super(key: key);
+class SCard extends StatelessWidget {
+  SCard({Key key, @required this.categoryObject}) : super(key: key);
 
   final CategoryObject categoryObject;
 //TODO if 1 place then say 'place' not places
