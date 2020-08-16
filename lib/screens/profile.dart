@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/widgets/profile_page_header.dart';
-import '../constants.dart' as Constants;
-import '../userdata.dart' as Userdata;
+import '../constants.dart' as constants;
+import '../userdata.dart' as userdata;
 import '../widgets/order_again.dart';
 import '../widgets/profile_favorites.dart';
 
@@ -24,34 +24,34 @@ class Profile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: Constants.PADDING_LTRB,
+                  padding: constants.PADDING_LTRB,
                   child: Text(
-                    '${Userdata.firstName} ${Userdata.lastName}',
-                    style: Constants.TITLE_STYLE,
+                    '${userdata.firstName} ${userdata.lastName}',
+                    style: constants.TITLE_STYLE,
                   ),
                 ),
                 Padding(
-                  padding: Constants.PADDING_LTRB,
+                  padding: constants.PADDING_LTRB,
                   child: Container(
                     child: Row(
                       children: [
                         Column(
                           children: [
-                            Text('${Userdata.orderAmount}+',
+                            Text('${userdata.orderAmount}+',
                                 style: TextStyle(fontWeight: FontWeight.bold)),
                             Text('orders'),
                           ],
                         ),
                         Column(
                           children: [
-                            Text(Userdata.tokenAmount.toString(),
+                            Text(userdata.tokenAmount.toString(),
                                 style: TextStyle(fontWeight: FontWeight.bold)),
                             Text('tokens'),
                           ],
                         ),
                         Column(
                           children: [
-                            Text(Userdata.creditsLeft.toString(),
+                            Text(userdata.creditsLeft.toString(),
                                 style: TextStyle(fontWeight: FontWeight.bold)),
                             Text('credits'),
                           ],
@@ -63,21 +63,21 @@ class Profile extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: Constants.PADDING_LTRB,
+              padding: constants.PADDING_LTRB,
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage: AssetImage(Userdata.imageUrl),
+                backgroundImage: AssetImage(userdata.imageUrl),
               ),
             )
           ]),
           Padding(
-            padding: Constants.PADDING_LTRB,
+            padding: constants.PADDING_LTRB,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
                   'Your favorites',
-                  style: Constants.TITLE_STYLE,
+                  style: constants.TITLE_STYLE,
                 ),
                 FlatButton(
                   shape: RoundedRectangleBorder(
@@ -97,13 +97,13 @@ class Profile extends StatelessWidget {
           ),
           ProfileFavorites(),
           Padding(
-            padding: Constants.PADDING_FOR_QUICKLINKS,
+            padding: constants.PADDING_FOR_QUICKLINKS,
             child: Column(
               children: [
                 ListTile(
                   leading: Text(
                     'Quick links',
-                    style: Constants.TITLE_STYLE,
+                    style: constants.TITLE_STYLE,
                   ),
                 ),
                 ListTile(
@@ -166,13 +166,13 @@ class Profile extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: Constants.PADDING_LTRB,
+            padding: constants.PADDING_LTRB,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
                   'Order again',
-                  style: Constants.TITLE_STYLE,
+                  style: constants.TITLE_STYLE,
                 ),
                 FlatButton(
                   shape: RoundedRectangleBorder(
@@ -192,13 +192,13 @@ class Profile extends StatelessWidget {
           ),
           HistoryOrders(howMany: 3),
           Padding(
-            padding: Constants.PADDING_FOR_QUICKLINKS,
+            padding: constants.PADDING_FOR_QUICKLINKS,
             child: Column(
               children: [
                 ListTile(
                   leading: Text(
                     'Settings',
-                    style: Constants.TITLE_STYLE,
+                    style: constants.TITLE_STYLE,
                   ),
                 ),
                 ListTile(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/widgets/delivery_tab_items.dart';
 
+import '../constants.dart' as constants;
+
 class Delivery extends StatelessWidget {
   const Delivery({
     Key key,

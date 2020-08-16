@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
+import '../constants.dart' as constants;
 
 // TODO restaurant page
 class RestaurantPage extends StatelessWidget {

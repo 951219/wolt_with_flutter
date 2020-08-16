@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/category_object.dart';
 import 'package:wolt_with_flutter/services/category_service.dart';
-import '../constants.dart' as Constants;
+import '../constants.dart' as constants;
 import 'dart:math' as Math;
 
 //TODO categories data model and service
@@ -13,7 +13,7 @@ class CategoriesBanner extends StatelessWidget {
         height: 180,
         child: ListView(
             scrollDirection: Axis.horizontal,
-            padding: Constants.PADDING_LTRB,
+            padding: constants.PADDING_LTRB,
             children: CategoryService().getCategories().map((object) {
               object.numberOfVenues = Math.Random().nextInt(15) + 1;
               return _CategoryGridItem(

@@ -4,7 +4,7 @@ import 'package:wolt_with_flutter/widgets/exclusivity_banner.dart';
 import 'package:wolt_with_flutter/widgets/hero_banner.dart';
 import 'package:wolt_with_flutter/widgets/specials_banner.dart';
 
-import '../constants.dart' as Constants;
+import '../constants.dart' as constants;
 
 class Discovery extends StatelessWidget {
   const Discovery({
@@ -24,7 +24,7 @@ class Discovery extends StatelessWidget {
             elevation: 2,
             // TODO remove the shadow below "Discover Tallinn"
             flexibleSpace: FlexibleSpaceBar(
-              titlePadding: Constants.PADDING_LTRB,
+              titlePadding: constants.PADDING_LTRB,
               title: Row(children: [
                 Text('Discover ',
                     style: TextStyle(
@@ -45,13 +45,13 @@ class Discovery extends StatelessWidget {
             delegate: SliverChildListDelegate([
               HeroBanner(),
               Padding(
-                padding: Constants.PADDING_LTRB,
+                padding: constants.PADDING_LTRB,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
                       'Only on Wolt!',
-                      style: Constants.TITLE_STYLE,
+                      style: constants.TITLE_STYLE,
                     ),
                     FlatButton(
                       shape: RoundedRectangleBorder(
@@ -71,21 +71,21 @@ class Discovery extends StatelessWidget {
               ),
               ExclusivityBanner(),
               Padding(
-                padding: Constants.PADDING_LTRB,
+                padding: constants.PADDING_LTRB,
                 child: Text(
                   'Wolt Specials!',
-                  style: Constants.TITLE_STYLE,
+                  style: constants.TITLE_STYLE,
                 ),
               ),
               SpecialsBanner(),
               Padding(
-                padding: Constants.PADDING_LTRB,
+                padding: constants.PADDING_LTRB,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
                       'Categories',
-                      style: Constants.TITLE_STYLE,
+                      style: constants.TITLE_STYLE,
                     ),
                     FlatButton(
                       shape: RoundedRectangleBorder(
@@ -105,13 +105,13 @@ class Discovery extends StatelessWidget {
               ),
               CategoriesBanner(),
               Container(
-                padding: Constants.PADDING_FOR_QUICKLINKS,
+                padding: constants.PADDING_FOR_QUICKLINKS,
                 child: Column(
                   children: [
                     ListTile(
                       leading: Text(
                         'Quick links',
-                        style: Constants.TITLE_STYLE,
+                        style: constants.TITLE_STYLE,
                       ),
                     ),
                     ListTile(

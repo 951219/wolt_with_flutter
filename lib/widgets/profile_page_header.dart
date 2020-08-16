@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import '../userdata.dart' as Userdata;
+import '../userdata.dart' as userdata;
 
 class ProfilePageHeader implements SliverPersistentHeaderDelegate {
   final double minExtent = 60;
@@ -22,7 +22,7 @@ class ProfilePageHeader implements SliverPersistentHeaderDelegate {
           left: 20,
           bottom: 16,
           child: Text(
-            'Howdy ${Userdata.firstName}!',
+            'Howdy ${userdata.firstName}!',
             style: TextStyle(
               fontSize: 26,
               fontWeight: FontWeight.bold,

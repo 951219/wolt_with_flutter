@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
 import 'package:wolt_with_flutter/services/restaurant_service.dart';
-import '../constants.dart' as Constants;
+import '../constants.dart' as constants;
 
 class ExclusivityBanner extends StatelessWidget {
   @override
@@ -10,7 +10,7 @@ class ExclusivityBanner extends StatelessWidget {
         height: 210,
         child: ListView(
             scrollDirection: Axis.horizontal,
-            padding: Constants.PADDING_LTRB,
+            padding: constants.PADDING_LTRB,
             children: RestaurantService().getRestaurants().map((object) {
               return _ExclusivityItem(restoObject: object); //Feature(photo);
             }).toList()));
