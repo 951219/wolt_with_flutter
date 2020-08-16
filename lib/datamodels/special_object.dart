@@ -1,16 +1,16 @@
-import 'restaurant_object.dart';
-
 class SpecialObject {
-  RestaurantObject restaurant;
-  String dishName;
-  String specialDishImage;
-  double oldPrice;
-  double newPrice;
+  final String imageURL;
+  final String title;
+  final String subtitle;
+  final bool discounted;
+  final double price;
+  final double newPrice;
 
   SpecialObject(
-      {this.restaurant,
-      this.dishName,
-      this.specialDishImage,
-      this.oldPrice,
+      {this.imageURL,
+      this.title,
+      this.subtitle,
+      this.discounted,
+      this.price,
       this.newPrice});
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wolt_with_flutter/widgets/delivery_tab_items.dart';
+import 'package:wolt_with_flutter/widgets/xxl_builder.dart';
 
 class Delivery extends StatelessWidget {
   const Delivery({
@@ -11,7 +11,7 @@ class Delivery extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: 55),
-      child: DeliveryItems(),
+      child: XXLBuilder(),
     );
   }
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
-import 'package:wolt_with_flutter/restaurantcards/smallest_restaurant_card.dart';
+import 'package:wolt_with_flutter/restaurantcards/xs_card.dart';
 import 'package:wolt_with_flutter/services/category_service.dart';
 import 'package:wolt_with_flutter/services/restaurant_service.dart';
-import 'package:wolt_with_flutter/widgets/order_again.dart';
+import 'package:wolt_with_flutter/widgets/xs_builder.dart';
 import '../constants.dart' as constants;
 
 class Search extends StatefulWidget {
@@ -87,7 +87,7 @@ class _SearchState extends State<Search> {
             ),
           ),
           Center(
-              child: HistoryOrders(
+              child: XSBuilder(
                   howMany: 5, showDeliveryPrice: true, addBottomLine: true)),
         ]));
   }
@@ -176,8 +176,8 @@ class _WordSuggestionList extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.fromLTRB(20, 8, 20, 0),
-                  child: SmallestRestaurantCard(
-                      restoObject: restod[0], showDeliveryPrice: true),
+                  child:
+                      XSCard(restoObject: restod[0], showDeliveryPrice: true),
                 ),
                 Divider(
                   endIndent: 20,
