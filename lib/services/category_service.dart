@@ -57,10 +57,11 @@ class CategoryService {
         title: 'Sandwich',
         imgUrl:
             'https://realfood.tesco.com/media/images/RFO-1400x919-ChickenClubSandwich-0ee77c05-5a77-49ac-a3bd-4d45e3b4dca7-0-1400x919.jpg'),
-    CategoryObject(
-        title: 'Street food',
-        imgUrl:
-            'https://lh3.googleusercontent.com/proxy/6gvv108Crgft3uQREIheFBunEIQ5tYw6ZjYN3i515qq-Z-Er6_Jttnxb1K1C-YcUokNr3S_ctTk41dH5j32IMqo2fSluCUSMmCa__7AfDtDLk0SGTOsfOJ-7HnWxvavdPDzmeDLx9FPNTFg'),
+    //TODO Link is not working for street food
+    // CategoryObject(
+    //     title: 'Street food',
+    //     imgUrl:
+    //         'https://lh3.googleusercontent.com/proxy/6gvv108Crgft3uQREIheFBunEIQ5tYw6ZjYN3i515qq-Z-Er6_Jttnxb1K1C-YcUokNr3S_ctTk41dH5j32IMqo2fSluCUSMmCa__7AfDtDLk0SGTOsfOJ-7HnWxvavdPDzmeDLx9FPNTFg'),
     CategoryObject(
         title: 'Soup',
         imgUrl:
