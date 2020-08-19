@@ -1,13 +1,15 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import '../userdata.dart' as userdata;
-
-class ProfilePageHeader implements SliverPersistentHeaderDelegate {
+class CollapsableHeader implements SliverPersistentHeaderDelegate {
   final double minExtent = 60;
   final double maxExtent = 120;
+  final String smallText;
+  final String bigText;
+  final bool showIcon;
+
+  CollapsableHeader({this.bigText, this.smallText, this.showIcon = false});
 
   @override
   Widget build(
@@ -22,7 +24,7 @@ class ProfilePageHeader implements SliverPersistentHeaderDelegate {
           left: 20,
           bottom: 16,
           child: Text(
-            'Howdy ${userdata.firstName}!',
+            bigText,
             style: TextStyle(
               fontSize: 26,
               fontWeight: FontWeight.bold,
@@ -34,7 +36,7 @@ class ProfilePageHeader implements SliverPersistentHeaderDelegate {
           left: 20,
           top: 16,
           child: Text(
-            'Profile',
+            smallText,
             style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -44,15 +46,17 @@ class ProfilePageHeader implements SliverPersistentHeaderDelegate {
         Positioned(
           right: 20,
           top: 10,
-          child: CircleAvatar(
-            backgroundColor: Colors.grey[200],
-            radius: 20,
-            child: IconButton(
-              icon: Icon(Icons.settings),
-              color: Colors.black,
-              onPressed: () {},
-            ),
-          ),
+          child: showIcon
+              ? CircleAvatar(
+                  backgroundColor: Colors.grey[200],
+                  radius: 20,
+                  child: IconButton(
+                    icon: Icon(Icons.settings),
+                    color: Colors.black,
+                    onPressed: () {},
+                  ),
+                )
+              : Container(),
           //TODO remove onpressed animation from the settings button
           //TODO implement settings button function ()=>ScrollDown();
         ),

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
-import '../constants.dart' as constants;
 
 // TODO restaurant page
 class RestaurantPage extends StatelessWidget {
   RestaurantPage(this.restaurantObject);
 
-  RestaurantObject restaurantObject;
+  final RestaurantObject restaurantObject;
 
   @override
   Widget build(BuildContext context) {
