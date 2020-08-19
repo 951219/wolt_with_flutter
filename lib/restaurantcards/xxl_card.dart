@@ -4,10 +4,15 @@ import 'package:wolt_with_flutter/pages/restaurant_page.dart';
 import '../constants.dart' as constants;
 
 class XXLCard extends StatelessWidget {
-  XXLCard({Key key, @required this.restoObject}) : super(key: key);
+  XXLCard(
+      {Key key,
+      @required this.restoObject,
+      this.favorite = false,
+      this.isNewVenue = false})
+      : super(key: key);
 
-  // final bool favorite;
-  // final bool newVenue;
+  final bool favorite;
+  final bool isNewVenue;
 
 //TODO Building the biggest card with a large picture, and details in the bottom part
 
@@ -44,30 +49,34 @@ class XXLCard extends StatelessWidget {
                     },
                   ),
                 ),
-                Positioned(
-                    top: 16,
-                    right: 16,
-                    child: IconButton(
-                        icon: Icon(
-                          Icons.favorite,
-                          color: Colors.white,
-                          size: 40,
-                        ),
-                        onPressed: () {})),
-                Positioned(
-                    top: 16,
-                    left: 16,
-                    child: Card(
-                      color: Colors.blue,
-                      child: Container(
-                        padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                        child: Center(
-                            child: Text(
-                          'NEW!',
-                          style: TextStyle(color: Colors.white),
-                        )),
-                      ),
-                    )),
+                favorite
+                    ? Positioned(
+                        top: 16,
+                        right: 16,
+                        child: IconButton(
+                            icon: Icon(
+                              Icons.favorite,
+                              color: Colors.white,
+                              size: 40,
+                            ),
+                            onPressed: () {}))
+                    : Container(),
+                isNewVenue
+                    ? Positioned(
+                        top: 16,
+                        left: 16,
+                        child: Card(
+                          color: Colors.blue,
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                            child: Center(
+                                child: Text(
+                              'NEW!',
+                              style: TextStyle(color: Colors.white),
+                            )),
+                          ),
+                        ))
+                    : Container(),
               ]),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -94,8 +103,21 @@ class XXLCard extends StatelessWidget {
                     ),
                   ),
                   Card(
-                    child: Column(
-                      children: [Text('time'), Text('min')],
+                    color: Colors.blue,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Text(
+                            '${restoObject.baseEstimate} - ${restoObject.baseEstimate + 10}',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          Text(
+                            'min',
+                            style: TextStyle(color: Colors.white),
+                          )
+                        ],
+                      ),
                     ),
                   )
                 ],

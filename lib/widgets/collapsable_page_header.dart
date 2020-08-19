@@ -26,7 +26,7 @@ class CollapsableHeader implements SliverPersistentHeaderDelegate {
           child: Text(
             bigText,
             style: TextStyle(
-              fontSize: 26,
+              fontSize: 30,
               fontWeight: FontWeight.bold,
               color: Colors.black.withOpacity(titleOpacity(shrinkOffset)),
             ),

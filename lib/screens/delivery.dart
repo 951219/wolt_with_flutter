@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wolt_with_flutter/services/location_service.dart';
 import 'package:wolt_with_flutter/widgets/collapsable_page_header.dart';
 import 'package:wolt_with_flutter/widgets/xxl_builder.dart';
 
@@ -20,12 +21,19 @@ class Delivery extends StatelessWidget {
         ),
         SliverList(delegate: SliverChildListDelegate(XXLBuilder().getList()))
       ]),
+      bottomSheet: Container(
+        color: Colors.blue,
+        child: ListTile(
+          leading: Icon(
+            Icons.home,
+            color: Colors.white,
+          ),
+          title: Text('address', style: TextStyle(color: Colors.white)),
+          trailing: Text('CHANGE', style: TextStyle(color: Colors.white)),
+          dense: true,
+          visualDensity: VisualDensity(horizontal: -4.0, vertical: -4.0),
+        ),
+      ),
     ));
   }
 }
-
-// TODO bottom blue bar, with building icon, address and a change button
-// bottomNavigationBar: BottomNavigationBar(
-//         backgroundColor: Colors.blue,
-//         items: [BottomNavigationBarItem(icon: Text('Change address'))],
-//       ),

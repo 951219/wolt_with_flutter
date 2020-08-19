@@ -9,10 +9,18 @@ class LocationService {
         latitude: position.latitude, longitude: position.longitude);
   }
 
-// useful for the blue bar / address section
-  Future<List<Placemark>> getLocationJson() async {
-    List<Placemark> placemark =
-        await Geolocator().placemarkFromCoordinates(52.2165157, 6.9437819);
-    return placemark;
+  Future<String> getCurrentLocationAsAnAddress() async {
+    final position = await Geolocator()
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    final List<Placemark> placemarks = await Geolocator()
+        .placemarkFromCoordinates(position.latitude, position.longitude);
+
+    return placemarks[0].toString();
+  }
+
+  Placemark getLocationFromCoor(double latitude, double longitude) {
+    Placemark placemarks =
+        Geolocator().placemarkFromCoordinates(latitude, longitude) as Placemark;
+    return placemarks;
   }
 }

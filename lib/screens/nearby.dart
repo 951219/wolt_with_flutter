@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:latlong/latlong.dart';
 import 'package:wolt_with_flutter/datamodels/user_location.dart';
 import 'package:wolt_with_flutter/services/location_service.dart';
@@ -10,6 +11,7 @@ class Nearby extends StatefulWidget {
 }
 
 class _NearbyState extends State<Nearby> {
+  Placemark placemarkLocation = new Placemark();
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -54,12 +56,9 @@ class _NearbyState extends State<Nearby> {
                 ),
               ),
               Container(
-                //TODO listview with card for restaurants - uses the same cards as delivery tab but iwhtout estimated time  and with approx distance from your location
-                height: 400,
-                child: Center(
-                  child: Text('Restaurant List'),
-                ),
-              )
+                  //TODO listview with card for restaurants - uses the same cards as delivery tab but iwhtout estimated time  and with approx distance from your location
+                  height: 400,
+                  child: Center(child: Text('Restaurants')))
             ]);
           } else {
             return Center(
