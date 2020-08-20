@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/widgets/m_builder.dart';
-import 'package:wolt_with_flutter/widgets/profile_page_header.dart';
+import 'package:wolt_with_flutter/widgets/collapsable_page_header.dart';
 import '../constants.dart' as constants;
 import '../userdata.dart' as userdata;
 import '../widgets/xs_builder.dart';
@@ -13,7 +13,10 @@ class Profile extends StatelessWidget {
       SliverPersistentHeader(
         pinned: true,
         floating: false,
-        delegate: ProfilePageHeader(),
+        delegate: CollapsableHeader(
+            smallText: 'Profile',
+            bigText: 'Howdy ${userdata.firstName}!',
+            showIcon: true),
       ),
       //TODO remove grey background
       SliverList(

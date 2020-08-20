@@ -15,7 +15,7 @@ class Discovery extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: CustomScrollView(
-        slivers: <Widget>[
+        slivers: [
           SliverAppBar(
             backgroundColor: Colors.white,
             expandedHeight: 120,
