@@ -9,18 +9,12 @@ class LocationService {
         latitude: position.latitude, longitude: position.longitude);
   }
 
-  Future<String> getCurrentLocationAsAnAddress() async {
+  Future<List<Placemark>> getCurrentLocationAsAnAddress() async {
     final position = await Geolocator()
         .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
     final List<Placemark> placemarks = await Geolocator()
         .placemarkFromCoordinates(position.latitude, position.longitude);
 
-    return placemarks[0].toString();
-  }
-
-  Placemark getLocationFromCoor(double latitude, double longitude) {
-    Placemark placemarks =
-        Geolocator().placemarkFromCoordinates(latitude, longitude) as Placemark;
     return placemarks;
   }
 }
