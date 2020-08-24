@@ -57,6 +57,7 @@ class SCard extends StatelessWidget {
         // margin: EdgeInsets.all(10),
       ),
       onTap: () {
+        // TODO pullDishesByCategory();
         Scaffold.of(context).showSnackBar(
           SnackBar(
             content: Text(categoryObject.title),
