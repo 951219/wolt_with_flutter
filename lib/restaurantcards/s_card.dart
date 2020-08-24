@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/category_object.dart';
+import 'package:wolt_with_flutter/pages/category_dishes_page.dart';
 
 class SCard extends StatelessWidget {
   SCard({Key key, @required this.categoryObject}) : super(key: key);
 
   final CategoryObject categoryObject;
-//TODO if 1 place then say 'place' not places
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -46,7 +46,7 @@ class SCard extends StatelessWidget {
                     categoryObject.title,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  Text('${categoryObject.numberOfVenues.toString()} places'),
+                  Text('${categoryObject.numberOfVenues.toString()} dishes'),
                 ],
               ),
             ),
@@ -57,13 +57,10 @@ class SCard extends StatelessWidget {
         // margin: EdgeInsets.all(10),
       ),
       onTap: () {
-        // TODO pullDishesByCategory();
-        Scaffold.of(context).showSnackBar(
-          SnackBar(
-            content: Text(categoryObject.title),
-            duration: Duration(seconds: 1),
-          ),
-        );
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CategoryDishesPage(categoryObject)));
       },
     );
   }

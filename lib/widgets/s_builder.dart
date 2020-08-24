@@ -19,7 +19,7 @@ class SBuilder extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     padding: Constants.PADDING_LTRB,
                     children: snapshot.data.map((object) {
-                      object.numberOfVenues = math.Random().nextInt(15) + 1;
+                      object.numberOfVenues = math.Random().nextInt(15) + 2;
                       return SCard(categoryObject: object); //Feature(photo);
                     }).toList());
               } else {

@@ -1,6 +1,8 @@
 import 'package:wolt_with_flutter/datamodels/special_object.dart';
 
 class SpecialsService {
+  //TODO pull random specials with generated prices
+
   List<SpecialObject> specialsList = [
     SpecialObject(
         imageURL:

@@ -1,16 +1,16 @@
 import 'dart:convert';
 import 'package:wolt_with_flutter/datamodels/category_object.dart';
 import 'package:http/http.dart' as http;
+import 'package:wolt_with_flutter/datamodels/dish_object.dart';
 
 class CategoryService {
-  List<CategoryObject> _listOfCategories = [];
-
   Future<List<CategoryObject>> fetchCategoryObjects() async {
+    List<CategoryObject> _listOfCategories = [];
     final response = await http
         .get('https://www.themealdb.com/api/json/v1/1/categories.php');
 
     if (response.statusCode == 200) {
-      print('Success');
+      print('Success - we got the categories');
 
       Map<String, dynamic> d = jsonDecode(response.body);
       _listOfCategories = List<CategoryObject>.from(
@@ -23,5 +23,23 @@ class CategoryService {
     }
   }
 
-// TODO pullDishesByCategory();
+  Future<List<DishObject>> fetchDishesByCategory(
+      CategoryObject categoryObject) async {
+    List<DishObject> _listOfDishes = [];
+    final response = await http.get(
+        'https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoryObject.title}');
+
+    if (response.statusCode == 200) {
+      print('Success - we got the dishes by categories');
+
+      Map<String, dynamic> d = jsonDecode(response.body);
+      _listOfDishes =
+          List<DishObject>.from(d['meals'].map((x) => DishObject.fromJson(x)));
+
+      _listOfDishes.shuffle();
+      return _listOfDishes;
+    } else {
+      throw Exception('Failed to load dishes');
+    }
+  }
 }

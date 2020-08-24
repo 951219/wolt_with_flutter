@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/category_object.dart';
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
+import 'package:wolt_with_flutter/pages/category_dishes_page.dart';
 import 'package:wolt_with_flutter/restaurantcards/xs_card.dart';
 import 'package:wolt_with_flutter/services/category_service.dart';
 import 'package:wolt_with_flutter/services/restaurant_service.dart';
@@ -74,8 +75,14 @@ class _SearchState extends State<Search> {
                                 color: Colors.blue[400],
                                 textColor: Colors.white,
                                 onPressed: () => {
-                                  //TODO pullDishesByCategory();
-                                  showSearchPage(context, _searchDelegate)
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              CategoryDishesPage(CategoryObject(
+                                                title: object.title,
+                                              ))))
+                                  // showSearchPage(context, _searchDelegate)
                                 },
                                 child: Text(
                                   object.title,
