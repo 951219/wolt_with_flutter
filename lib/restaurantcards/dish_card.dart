@@ -15,7 +15,7 @@ class DishCard extends StatelessWidget {
               width: 210,
               height: 140,
               child: Image.network(
-                dishObject.imgUrl,
+                dishObject.imgURL,
                 fit: BoxFit.cover,
                 loadingBuilder: (BuildContext context, Widget child,
                     ImageChunkEvent loadingProgress) {

@@ -9,23 +9,27 @@ class SBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 180,
-        child: FutureBuilder(
-            future: CategoryService().fetchCategoryObjects(),
-            builder: (BuildContext context,
-                AsyncSnapshot<List<CategoryObject>> snapshot) {
-              if (snapshot.hasData) {
-                return ListView(
-                    scrollDirection: Axis.horizontal,
-                    padding: Constants.PADDING_LTRB,
-                    children: snapshot.data.map((object) {
-                      object.numberOfVenues = math.Random().nextInt(15) + 2;
-                      return SCard(categoryObject: object); //Feature(photo);
-                    }).toList());
-              } else {
-                return Text('Loading...',
-                    style: TextStyle(color: Colors.white, fontSize: 13));
-              }
-            }));
+      height: 180,
+      child: FutureBuilder(
+        future: CategoryService().fetchCategoryObjects(),
+        builder: (BuildContext context,
+            AsyncSnapshot<List<CategoryObject>> snapshot) {
+          if (snapshot.hasData) {
+            return ListView(
+                scrollDirection: Axis.horizontal,
+                padding: Constants.PADDING_LTRB,
+                children: snapshot.data.map((object) {
+                  object.numberOfVenues = math.Random().nextInt(15) + 2;
+                  return SCard(categoryObject: object); //Feature(photo);
+                }).toList());
+          } else {
+            return Text(
+              'Loading...',
+              style: TextStyle(color: Colors.white, fontSize: 13),
+            );
+          }
+        },
+      ),
+    );
   }
 }

@@ -5,8 +5,6 @@ import 'package:wolt_with_flutter/restaurantcards/dish_card.dart';
 
 import 'package:wolt_with_flutter/services/category_service.dart';
 
-import '../constants.dart' as constants;
-
 class DishesBuilder extends StatelessWidget {
   final CategoryObject categoryObject;
 
@@ -30,8 +28,12 @@ class DishesBuilder extends StatelessWidget {
             ]);
           } else {
             return Center(
-                child: SizedBox(
-                    height: 75, width: 75, child: CircularProgressIndicator()));
+              child: SizedBox(
+                height: 75,
+                width: 75,
+                child: CircularProgressIndicator(),
+              ),
+            );
           }
         });
   }
