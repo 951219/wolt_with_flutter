@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
 
 // TODO restaurant page
+// TODO  pull random items to the menu
 class RestaurantPage extends StatelessWidget {
   RestaurantPage(this.restaurantObject);
 

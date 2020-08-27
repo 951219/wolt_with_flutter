@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:wolt_with_flutter/datamodels/category_object.dart';
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
+import 'package:wolt_with_flutter/pages/category_dishes_page.dart';
 import 'package:wolt_with_flutter/restaurantcards/xs_card.dart';
 import 'package:wolt_with_flutter/services/category_service.dart';
 import 'package:wolt_with_flutter/services/restaurant_service.dart';
@@ -57,28 +59,43 @@ class _SearchState extends State<Search> {
         body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           SizedBox(height: 20),
           Center(
-            child: Wrap(
-                alignment: WrapAlignment.center,
-                children: CategoryService().getCategories().map((object) {
-                  return Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 4),
-                    child: FlatButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      color: Colors.blue[400],
-                      textColor: Colors.white,
-                      onPressed: () => {
-                        //TODO implement tag based search
-                        showSearchPage(context, _searchDelegate)
-                      },
-                      child: Text(
-                        object.title,
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  );
-                }).toList()),
-          ),
+              child: FutureBuilder(
+                  future: CategoryService().fetchCategoryObjects(),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<List<CategoryObject>> snapshot) {
+                    if (snapshot.hasData) {
+                      return Wrap(
+                          alignment: WrapAlignment.center,
+                          children: snapshot.data.map((object) {
+                            return Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 4),
+                              child: FlatButton(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)),
+                                color: Colors.blue[400],
+                                textColor: Colors.white,
+                                onPressed: () => {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              CategoryDishesPage(CategoryObject(
+                                                title: object.title,
+                                              ))))
+                                  // showSearchPage(context, _searchDelegate)
+                                },
+                                child: Text(
+                                  object.title,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            );
+                          }).toList());
+                    } else {
+                      return Text('Loading...',
+                          style: TextStyle(color: Colors.white, fontSize: 13));
+                    }
+                  })),
           Padding(
             padding: constants.PADDING_LTRB,
             child: Text(

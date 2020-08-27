@@ -20,7 +20,7 @@ class LCard extends StatelessWidget {
                       width: 240,
                       height: 145,
                       child: Image.network(
-                        specialObject.imageURL,
+                        specialObject.imgURL,
                         fit: BoxFit.cover,
                         loadingBuilder: (BuildContext context, Widget child,
                             ImageChunkEvent loadingProgress) {
@@ -56,22 +56,23 @@ class LCard extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            Text(
-                              specialObject.subtitle,
+                          ],
+                        )),
+                    Positioned(
+                        right: 15,
+                        child: Container(
+                          height: 45,
+                          width: 45,
+                          color: Colors.red,
+                          child: Center(
+                            child: Text(
+                              specialObject.newPrice.toStringAsFixed(2),
                               style: TextStyle(
-                                  shadows: [
-                                    Shadow(
-                                      blurRadius: 10.0,
-                                      color: Colors.black,
-                                    )
-                                  ],
                                   color: Colors.white,
-                                  fontSize: 15,
                                   fontWeight: FontWeight.bold),
                             ),
-                          ],
+                          ),
                         ))
-                    //TODO add red container for new price
                   ],
                 ),
                 shape: RoundedRectangleBorder(
@@ -86,12 +87,7 @@ class LCard extends StatelessWidget {
               duration: Duration(seconds: 1),
             ),
           );
-
           //TODO special object to open a restaurant
-          // Navigator.push(
-          //     context,
-          //     MaterialPageRoute(
-          //         builder: (context) => RestaurantPage(specialObject.restaurant)));
         });
   }
 }
