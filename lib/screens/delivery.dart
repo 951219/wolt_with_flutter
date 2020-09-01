@@ -13,15 +13,18 @@ class Delivery extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      body: CustomScrollView(slivers: [
-        SliverPersistentHeader(
-          pinned: true,
-          floating: false,
-          delegate:
-              CollapsableHeader(smallText: 'Delivery', bigText: 'Delivery'),
-        ),
-        SliverList(delegate: SliverChildListDelegate(XXLBuilder().getList()))
-      ]),
+      body: Padding(
+        padding: EdgeInsets.only(bottom: 30),
+        child: CustomScrollView(slivers: [
+          SliverPersistentHeader(
+            pinned: true,
+            floating: false,
+            delegate:
+                CollapsableHeader(smallText: 'Delivery', bigText: 'Delivery'),
+          ),
+          SliverList(delegate: SliverChildListDelegate(XXLBuilder().getList()))
+        ]),
+      ),
       bottomSheet: Container(
         color: Colors.blue,
         child: ListTile(

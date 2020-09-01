@@ -7,6 +7,8 @@ class RestaurantObject {
   final String pricing; //  $
   final int baseEstimate;
   final int id;
+  bool isFavorite;
+  final bool isNew;
 
   RestaurantObject(
       {this.title,
@@ -16,5 +18,7 @@ class RestaurantObject {
       this.rating,
       this.pricing,
       this.baseEstimate,
-      this.id});
+      this.id,
+      this.isFavorite,
+      this.isNew});
 }
