@@ -10,17 +10,20 @@ class RestaurantService {
         baseDeliveryPrice: 1.9,
         rating: 8.8,
         pricing: '€€',
-        baseEstimate: 40),
+        baseEstimate: 40,
+        isFavorite: true,
+        isNew: false),
     RestaurantObject(
-      title: 'Pizza plaza',
-      subtitle: 'Best pizza in town',
-      imageURL:
-          'https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032_1280.jpg',
-      baseDeliveryPrice: 1.9,
-      rating: 9.5,
-      pricing: '€',
-      baseEstimate: 20,
-    ),
+        title: 'Pizza plaza',
+        subtitle: 'Best pizza in town',
+        imageURL:
+            'https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032_1280.jpg',
+        baseDeliveryPrice: 1.9,
+        rating: 9.5,
+        pricing: '€',
+        baseEstimate: 20,
+        isFavorite: false,
+        isNew: true),
     RestaurantObject(
         title: 'Cafe',
         subtitle: '',
@@ -29,7 +32,9 @@ class RestaurantService {
         baseDeliveryPrice: 1.9,
         rating: 8.4,
         pricing: '€€€',
-        baseEstimate: 45),
+        baseEstimate: 45,
+        isFavorite: true,
+        isNew: false),
     RestaurantObject(
         title: 'Pizza',
         subtitle: 'nom nom',
@@ -38,7 +43,9 @@ class RestaurantService {
         baseDeliveryPrice: 1.9,
         rating: 9.2,
         pricing: '€€',
-        baseEstimate: 30),
+        baseEstimate: 30,
+        isFavorite: true,
+        isNew: true),
     RestaurantObject(
         title: 'Burger king',
         subtitle: 'nom nom',
@@ -47,7 +54,9 @@ class RestaurantService {
         baseDeliveryPrice: 1.9,
         rating: 9.2,
         pricing: '€€',
-        baseEstimate: 30),
+        baseEstimate: 30,
+        isFavorite: true,
+        isNew: false),
     RestaurantObject(
         title: 'Sushiplaza',
         subtitle: 'oof',
@@ -56,7 +65,9 @@ class RestaurantService {
         baseDeliveryPrice: 1.9,
         rating: 9.2,
         pricing: '€€',
-        baseEstimate: 30),
+        baseEstimate: 30,
+        isFavorite: true,
+        isNew: false),
     RestaurantObject(
         title: 'Cafe Boy',
         subtitle: 'yay',
@@ -65,7 +76,9 @@ class RestaurantService {
         baseDeliveryPrice: 1.9,
         rating: 7.9,
         pricing: '€',
-        baseEstimate: 45),
+        baseEstimate: 45,
+        isFavorite: false,
+        isNew: true),
   ];
 
 // brekkie https://cdn.pixabay.com/photo/2016/11/06/23/31/breakfast-1804457_1280.jpg
