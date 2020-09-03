@@ -34,18 +34,29 @@ class DishService {
     List<DishObject> dishes = [];
     List<CategoryObject> categories =
         await CategoryService().fetchCategoryObjects();
-    for (int i = 0; i < math.Random().nextInt(categories.length); i++) {
+
+    int numberOfCategories = math.Random().nextInt(categories.length);
+
+    for (int i = 0; i < numberOfCategories; i++) {
       List<DishObject> fetchedDishes =
           await CategoryService().fetchDishesByCategory(categories[i]);
-      //TODO add another forloop for pulling hte contents for each meal
+      // for(DishObject obj in fetchedDishes){
+      // TODO add another forloop for pulling hte contents for each meal
+      // }
+
       dishes.addAll(fetchedDishes);
+
+      if (dishes.length > 15) {
+        dishes = dishes.sublist(0, 15);
+        break;
+      }
     }
-    dishes.forEach((element) {
-      // !  contents array is empty
-      print(
-          '{title: ${element.title} contents: ${element.contents} imgURL: ${element.imgURL}}');
-      print(element.contents.length);
-    });
+
+    print('found: ${dishes.length} dishes');
+    for (DishObject object in dishes) {
+      print(object.title);
+    }
+
     dishes.shuffle();
     return dishes;
   }
