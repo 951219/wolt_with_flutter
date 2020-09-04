@@ -29,9 +29,10 @@ class MenuBuilder extends StatelessWidget {
           );
         } else {
           return Center(
-            child: Text(
-              'Loading...',
-              style: TextStyle(fontSize: 13),
+            child: SizedBox(
+              height: 75,
+              width: 75,
+              child: CircularProgressIndicator(),
             ),
           );
         }

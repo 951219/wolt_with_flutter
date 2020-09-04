@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:math' as math;
 import 'package:wolt_with_flutter/datamodels/category_object.dart';
@@ -7,14 +8,11 @@ import 'package:wolt_with_flutter/services/category_service.dart';
 
 class DishService {
   Future<DishObject> fetchARandomDish() async {
-    print('Fetching a random dish');
     List<DishObject> _listOfDishes = [];
     final response =
         await http.get('https://www.themealdb.com/api/json/v1/1/random.php');
 
     if (response.statusCode == 200) {
-      print('Success - we got pulled a random dish');
-
       Map<String, dynamic> d = jsonDecode(response.body);
       //TODO needs refactoring
       _listOfDishes = List<DishObject>.from(
@@ -23,10 +21,10 @@ class DishService {
         ),
       );
 
-      print(_listOfDishes[0].title);
+      print('Success - fetchARandomDish() - ${_listOfDishes[0].title}');
       return _listOfDishes[0];
     } else {
-      throw Exception('Failed to load a random dish');
+      throw Exception('Failure - fetchARandomDish()');
     }
   }
 
@@ -52,12 +50,13 @@ class DishService {
       }
     }
 
-    print('found: ${dishes.length} dishes');
+    String dishesForPrint = '';
     for (DishObject object in dishes) {
-      print(object.title);
+      dishesForPrint += '${object.title}, ';
     }
-
     dishes.shuffle();
+    print(
+        'Success - pullRandomMenu() - fetched: ${dishes.length} dishes: $dishesForPrint \n');
     return dishes;
   }
 }

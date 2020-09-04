@@ -6,7 +6,6 @@ import 'dart:math' as math;
 class SpecialsService {
   Future<List<SpecialObject>> fetchSpecials() async {
     int howMany = math.Random().nextInt(6) + 4;
-    print('Fetching specials');
     List<SpecialObject> list = [];
     for (int i = 0; i < howMany; i++) {
       DishObject dish = await DishService().fetchARandomDish();
@@ -18,6 +17,9 @@ class SpecialsService {
           math.Random().nextInt(15).toDouble() + 3 + math.Random().nextDouble();
       list.add(special);
     }
+
+    print(
+        'Success - fetchSpecials() - fetched and created ${list.length} specials');
     return list;
   }
 }

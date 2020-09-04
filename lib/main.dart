@@ -1,17 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:wolt_with_flutter/screens/delivery.dart';
 import 'package:wolt_with_flutter/screens/discovery.dart';
 import 'package:wolt_with_flutter/screens/nearby.dart';
 import 'package:wolt_with_flutter/screens/profile.dart';
 import 'package:wolt_with_flutter/screens/search.dart';
+import 'package:wolt_with_flutter/services/location_service.dart';
+import 'constants.dart' as constants;
+import 'datamodels/user_location.dart';
 
 void main() {
+  print('Application starting');
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    constants.locationAsAnAddress = FutureBuilder(
+      future: LocationService().getCurrentLocationAsAnAddress(),
+      builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+        if (snapshot.hasData) {
+          return Text('${snapshot.data}');
+        } else {
+          return Text('Loading...');
+        }
+      },
+    );
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Wolt with Flutter',
@@ -82,7 +98,6 @@ class _HomeState extends State<Home> {
           ],
           onTap: (index) {
             setState(() {
-              print(tabs[index].toString());
               _currentIndex = index;
             });
           }),

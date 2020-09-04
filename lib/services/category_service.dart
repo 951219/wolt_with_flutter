@@ -10,16 +10,16 @@ class CategoryService {
         .get('https://www.themealdb.com/api/json/v1/1/categories.php');
 
     if (response.statusCode == 200) {
-      print('Success - we got the categories');
-
       Map<String, dynamic> d = jsonDecode(response.body);
       _listOfCategories = List<CategoryObject>.from(
           d['categories'].map((x) => CategoryObject.fromJson(x)));
 
       _listOfCategories.shuffle();
+      print(
+          'Success - fetchCategoryObjects() - fetched ${_listOfCategories.length} categories');
       return _listOfCategories;
     } else {
-      throw Exception('Failed to load categories');
+      throw Exception('Failure - fetchCategoryObjects()');
     }
   }
 
@@ -30,7 +30,7 @@ class CategoryService {
         'https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoryObject.title}');
 
     if (response.statusCode == 200) {
-      print('Success - we got the dishes by categories');
+      print('Success - fetchDishesByCategory()');
 
       Map<String, dynamic> d = jsonDecode(response.body);
       _listOfDishes =
@@ -39,7 +39,7 @@ class CategoryService {
       _listOfDishes.shuffle();
       return _listOfDishes;
     } else {
-      throw Exception('Failed to load dishes');
+      throw Exception('Failure - fetchDishesByCategory()');
     }
   }
 }
