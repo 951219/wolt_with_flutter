@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/category_object.dart';
 import 'package:wolt_with_flutter/widgets/dishes_builder.dart';
-import '../constants.dart' as constants;
 
 // TODO category dishes page
 class CategoryDishesPage extends StatelessWidget {

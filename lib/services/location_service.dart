@@ -5,16 +5,20 @@ class LocationService {
   Future<UserLocation> getCurrentLocation() async {
     final position = await Geolocator()
         .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    print('Success - getCurrentLocation()');
     return UserLocation(
         latitude: position.latitude, longitude: position.longitude);
   }
 
-  Future<List<Placemark>> getCurrentLocationAsAnAddress() async {
+  Future<String> getCurrentLocationAsAnAddress() async {
+    //TODO refactoring
+
     final position = await Geolocator()
         .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
     final List<Placemark> placemarks = await Geolocator()
         .placemarkFromCoordinates(position.latitude, position.longitude);
 
-    return placemarks;
+    print('Success - getCurrentLocationAsAnAddress()');
+    return '${placemarks.first.locality}, ${placemarks.first.thoroughfare} ${placemarks.first.name}';
   }
 }
