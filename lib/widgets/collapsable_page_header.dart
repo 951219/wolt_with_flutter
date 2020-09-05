@@ -7,8 +7,9 @@ class CollapsableHeader implements SliverPersistentHeaderDelegate {
   final double maxExtent = 120;
   final String smallText;
   final String bigText;
+  final bool showIcon;
 
-  CollapsableHeader({this.bigText, this.smallText});
+  CollapsableHeader({this.bigText, this.smallText, this.showIcon = false});
 
   @override
   Widget build(
@@ -42,17 +43,19 @@ class CollapsableHeader implements SliverPersistentHeaderDelegate {
                 color: Colors.black.withOpacity(profileOpacity(shrinkOffset))),
           ),
         ),
-        Positioned(
-          right: 20,
-          top: 10,
-          child: CircleAvatar(
-            backgroundColor: Colors.grey[200],
-            radius: 20,
-            child: Icon(Icons.settings, color: Colors.black),
-          ),
+        showIcon
+            ? Positioned(
+                right: 20,
+                top: 10,
+                child: CircleAvatar(
+                  backgroundColor: Colors.grey[200],
+                  radius: 20,
+                  child: Icon(Icons.settings, color: Colors.black),
+                ),
 
-          //TODO implement settings button function ()=>ScrollDown();
-        ),
+                //TODO implement settings button function ()=>ScrollDown();
+              )
+            : Container(),
         Positioned(
           left: 0,
           bottom: -3,

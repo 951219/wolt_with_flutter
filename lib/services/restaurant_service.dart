@@ -100,7 +100,7 @@ class RestaurantService {
         pricing: '€€',
         baseEstimate: 10,
         isFavorite: false,
-        isNew: true),
+        isNew: false),
     RestaurantObject(
         title: 'Kenert\'s pizza!',
         subtitle: 'You already know!',

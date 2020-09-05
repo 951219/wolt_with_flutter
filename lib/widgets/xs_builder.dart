@@ -17,8 +17,7 @@ class XSBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: constants.PADDING_LTRB,
-      child: Container(
-          child: Column(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children:
             RestaurantService().getNumberOfRestaurants(howMany).map((object) {
@@ -31,7 +30,7 @@ class XSBuilder extends StatelessWidget {
             ],
           );
         }).toList(),
-      )),
+      ),
     );
   }
 }

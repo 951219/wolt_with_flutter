@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
 import 'package:wolt_with_flutter/pages/restaurant_page.dart';
@@ -20,18 +21,20 @@ class XSCard extends StatelessWidget {
         child: Column(
           children: [
             Row(
-              children: <Widget>[
-                Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    image: DecorationImage(
+              children: [
+                Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Container(
+                    width: 60,
+                    height: 60,
+                    // TODO border should be circular
+                    child: CachedNetworkImage(
+                        placeholder: (context, url) =>
+                            Center(child: CircularProgressIndicator()),
                         fit: BoxFit.cover,
-                        image: NetworkImage(restoObject.imageURL)),
+                        imageUrl: restoObject.imageURL),
                   ),
-
-                  //TODO refactor to add aloading icon
                 ),
                 SizedBox(
                   width: 15,

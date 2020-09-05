@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/category_object.dart';
 import 'package:wolt_with_flutter/pages/category_dishes_page.dart';
@@ -17,22 +18,11 @@ class SCard extends StatelessWidget {
             Container(
               width: 120,
               height: 110,
-              child: Image.network(
-                categoryObject.imgUrl,
-                fit: BoxFit.cover,
-                loadingBuilder: (BuildContext context, Widget child,
-                    ImageChunkEvent loadingProgress) {
-                  if (loadingProgress == null) return child;
-                  return Center(
-                    child: CircularProgressIndicator(
-                      value: loadingProgress.expectedTotalBytes != null
-                          ? loadingProgress.cumulativeBytesLoaded /
-                              loadingProgress.expectedTotalBytes
-                          : null,
-                    ),
-                  );
-                },
-              ),
+              child: CachedNetworkImage(
+                  placeholder: (context, url) =>
+                      Center(child: CircularProgressIndicator()),
+                  fit: BoxFit.cover,
+                  imageUrl: categoryObject.imgUrl),
             ),
             Container(
               alignment: Alignment.centerLeft,

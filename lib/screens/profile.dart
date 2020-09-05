@@ -14,7 +14,9 @@ class Profile extends StatelessWidget {
         pinned: true,
         floating: false,
         delegate: CollapsableHeader(
-            smallText: 'Profile', bigText: 'Howdy ${userdata.firstName}!'),
+            smallText: 'Profile',
+            bigText: 'Howdy ${userdata.firstName}!',
+            showIcon: true),
       ),
       SliverList(
           delegate: SliverChildListDelegate(

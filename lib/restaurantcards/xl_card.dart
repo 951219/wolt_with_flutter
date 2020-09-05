@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
 import 'package:wolt_with_flutter/pages/restaurant_page.dart';
@@ -20,21 +21,11 @@ class XLCard extends StatelessWidget {
                     Container(
                       width: 415,
                       height: 245,
-                      child: Image.network(
-                        restoObject.imageURL,
+                      child: CachedNetworkImage(
+                        placeholder: (context, url) =>
+                            Center(child: CircularProgressIndicator()),
                         fit: BoxFit.cover,
-                        loadingBuilder: (BuildContext context, Widget child,
-                            ImageChunkEvent loadingProgress) {
-                          if (loadingProgress == null) return child;
-                          return Center(
-                            child: CircularProgressIndicator(
-                              value: loadingProgress.expectedTotalBytes != null
-                                  ? loadingProgress.cumulativeBytesLoaded /
-                                      loadingProgress.expectedTotalBytes
-                                  : null,
-                            ),
-                          );
-                        },
+                        imageUrl: restoObject.imageURL,
                       ),
                     ),
                     Positioned(

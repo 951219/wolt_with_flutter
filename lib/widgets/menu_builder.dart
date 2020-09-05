@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/dish_object.dart';
 import 'package:wolt_with_flutter/services/dish_service.dart';
@@ -12,15 +13,18 @@ class MenuBuilder extends StatelessWidget {
         if (snapshot.hasData) {
           return Column(
             children: snapshot.data.map((object) {
-              // TODO menu item visual
               return ExpansionTile(
                 title: Text(
                   object.title,
                   style: TextStyle(color: Colors.black),
                 ),
-                trailing: Image(image: NetworkImage(object.imgURL)),
+                trailing: CachedNetworkImage(
+                    placeholder: (context, url) =>
+                        Center(child: CircularProgressIndicator()),
+                    fit: BoxFit.cover,
+                    imageUrl: object.imgURL),
                 children: [
-                  Image(height: 200, image: NetworkImage(object.imgURL)),
+                  // TODO menu item visual
                   Text(
                     object.contents.toString(),
                   ),
@@ -29,11 +33,15 @@ class MenuBuilder extends StatelessWidget {
             }).toList(),
           );
         } else {
-          return Center(
-            child: SizedBox(
-              height: 75,
-              width: 75,
-              child: CircularProgressIndicator(),
+          return Container(
+            height: 250,
+            width: 150,
+            child: Center(
+              child: SizedBox(
+                height: 75,
+                width: 75,
+                child: CircularProgressIndicator(),
+              ),
             ),
           );
         }

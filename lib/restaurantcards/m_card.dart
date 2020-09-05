@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
 import 'package:wolt_with_flutter/pages/restaurant_page.dart';
@@ -13,26 +14,15 @@ class MCard extends StatelessWidget {
           semanticContainer: true,
           clipBehavior: Clip.antiAliasWithSaveLayer,
           child: Column(
-            children: <Widget>[
+            children: [
               Container(
                 width: 160,
                 height: 110,
-                child: Image.network(
-                  restoObject.imageURL,
-                  fit: BoxFit.cover,
-                  loadingBuilder: (BuildContext context, Widget child,
-                      ImageChunkEvent loadingProgress) {
-                    if (loadingProgress == null) return child;
-                    return Center(
-                      child: CircularProgressIndicator(
-                        value: loadingProgress.expectedTotalBytes != null
-                            ? loadingProgress.cumulativeBytesLoaded /
-                                loadingProgress.expectedTotalBytes
-                            : null,
-                      ),
-                    );
-                  },
-                ),
+                child: CachedNetworkImage(
+                    placeholder: (context, url) =>
+                        Center(child: CircularProgressIndicator()),
+                    fit: BoxFit.cover,
+                    imageUrl: restoObject.imageURL),
               ),
               Container(
                 height: 70,

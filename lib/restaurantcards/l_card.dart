@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/special_object.dart';
 
@@ -15,27 +16,15 @@ class LCard extends StatelessWidget {
                 semanticContainer: true,
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 child: Stack(
-                  children: <Widget>[
+                  children: [
                     Container(
-                      width: 240,
-                      height: 145,
-                      child: Image.network(
-                        specialObject.imgURL,
-                        fit: BoxFit.cover,
-                        loadingBuilder: (BuildContext context, Widget child,
-                            ImageChunkEvent loadingProgress) {
-                          if (loadingProgress == null) return child;
-                          return Center(
-                            child: CircularProgressIndicator(
-                              value: loadingProgress.expectedTotalBytes != null
-                                  ? loadingProgress.cumulativeBytesLoaded /
-                                      loadingProgress.expectedTotalBytes
-                                  : null,
-                            ),
-                          );
-                        },
-                      ),
-                    ),
+                        width: 240,
+                        height: 145,
+                        child: CachedNetworkImage(
+                            placeholder: (context, url) =>
+                                Center(child: CircularProgressIndicator()),
+                            fit: BoxFit.cover,
+                            imageUrl: specialObject.imgURL)),
                     Positioned(
                         bottom: 10,
                         left: 10,

@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
@@ -23,22 +24,11 @@ class CollapsableRestaurantPageHeader
           height: 270,
           child: Opacity(
             opacity: titleOpacity(shrinkOffset),
-            child: Image.network(
-              restoObject.imageURL,
-              fit: BoxFit.cover,
-              loadingBuilder: (BuildContext context, Widget child,
-                  ImageChunkEvent loadingProgress) {
-                if (loadingProgress == null) return child;
-                return Center(
-                  child: CircularProgressIndicator(
-                    value: loadingProgress.expectedTotalBytes != null
-                        ? loadingProgress.cumulativeBytesLoaded /
-                            loadingProgress.expectedTotalBytes
-                        : null,
-                  ),
-                );
-              },
-            ),
+            child: CachedNetworkImage(
+                placeholder: (context, url) =>
+                    Center(child: CircularProgressIndicator()),
+                fit: BoxFit.cover,
+                imageUrl: restoObject.imageURL),
           ),
         ),
 
