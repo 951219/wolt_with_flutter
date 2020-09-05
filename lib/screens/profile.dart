@@ -77,7 +77,7 @@ class Profile extends StatelessWidget {
             padding: constants.PADDING_LTRB,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
+              children: [
                 Text(
                   'Your favorites',
                   style: constants.TITLE_STYLE,

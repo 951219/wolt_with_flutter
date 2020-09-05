@@ -1,12 +1,11 @@
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
 import 'package:flutter/material.dart';
-import 'package:wolt_with_flutter/services/location_service.dart';
+import 'package:wolt_with_flutter/datamodels/user_location.dart';
 import 'package:wolt_with_flutter/widgets/collapsable_restaurant_page_header.dart';
 import 'package:wolt_with_flutter/widgets/menu_builder.dart';
 import '../constants.dart' as constants;
 
 // TODO restaurant page
-// TODO  pull random items to the menu
 // TODO hero animation???
 
 class RestaurantPage extends StatelessWidget {
@@ -94,7 +93,16 @@ class RestaurantPage extends StatelessWidget {
                     leading: Icon(Icons.motorcycle),
                     title: Text(
                         'Delivery in ${restoObject.baseEstimate} - ${restoObject.baseEstimate + 10} min'),
-                    subtitle: constants.locationAsAnAddress,
+                    subtitle: FutureBuilder(
+                        future: constants.userLocation,
+                        builder: (BuildContext context,
+                            AsyncSnapshot<UserLocation> snapshot) {
+                          if (snapshot.hasData) {
+                            return Text(snapshot.data.address);
+                          } else {
+                            return Text('Loading...');
+                          }
+                        }),
                     trailing: FlatButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),

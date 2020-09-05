@@ -12,6 +12,7 @@ class MenuBuilder extends StatelessWidget {
         if (snapshot.hasData) {
           return Column(
             children: snapshot.data.map((object) {
+              // TODO menu item visual
               return ExpansionTile(
                 title: Text(
                   object.title,

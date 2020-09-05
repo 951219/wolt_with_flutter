@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:latlong/latlong.dart';
 import 'package:wolt_with_flutter/datamodels/user_location.dart';
-import 'package:wolt_with_flutter/services/location_service.dart';
+import '../constants.dart' as constants;
 
 class Nearby extends StatefulWidget {
   @override
@@ -11,14 +10,13 @@ class Nearby extends StatefulWidget {
 }
 
 class _NearbyState extends State<Nearby> {
-  Placemark placemarkLocation = new Placemark();
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: LocationService().getCurrentLocation(),
+        future: constants.userLocation,
         builder: (BuildContext context, AsyncSnapshot<UserLocation> snapshot) {
           if (snapshot.hasData) {
-            var location =
+            LatLng location =
                 LatLng(snapshot.data.latitude, snapshot.data.longitude);
             return ListView(children: [
               Container(
@@ -62,8 +60,13 @@ class _NearbyState extends State<Nearby> {
             ]);
           } else {
             return Center(
-                child: SizedBox(
-                    height: 75, width: 75, child: CircularProgressIndicator()));
+              child: Container(
+                  height: 80,
+                  width: 80,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                  )),
+            );
           }
         });
   }

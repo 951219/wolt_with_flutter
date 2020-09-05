@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wolt_with_flutter/datamodels/user_location.dart';
 import 'package:wolt_with_flutter/widgets/collapsable_page_header.dart';
 import 'package:wolt_with_flutter/widgets/xxl_builder.dart';
 import '../constants.dart' as constants;
@@ -33,7 +34,24 @@ class Delivery extends StatelessWidget {
             size: 17,
           ),
           //TODO space between icon and title should be smaller
-          title: constants.locationAsAnAddress,
+          title: FutureBuilder(
+            future: constants.userLocation,
+            builder:
+                (BuildContext context, AsyncSnapshot<UserLocation> snapshot) {
+              if (snapshot.hasData) {
+                return Text(
+                  snapshot.data.address,
+                  style: TextStyle(color: Colors.white),
+                );
+              } else {
+                return Text(
+                  'Loading...',
+                  style: TextStyle(color: Colors.white),
+                );
+              }
+            },
+          ),
+
           trailing: Text('CHANGE',
               style: TextStyle(color: Colors.white, fontSize: 13)),
           dense: true,
