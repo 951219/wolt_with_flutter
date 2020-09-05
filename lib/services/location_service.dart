@@ -14,6 +14,7 @@ class LocationService {
         latitude: position.latitude,
         longitude: position.longitude,
         address:
-            '${placemarks.first.locality}, ${placemarks.first.thoroughfare} ${placemarks.first.name}');
+            '${placemarks.first.locality}, ${placemarks.first.thoroughfare} ${placemarks.first.name}',
+        city: placemarks.first.locality);
   }
 }

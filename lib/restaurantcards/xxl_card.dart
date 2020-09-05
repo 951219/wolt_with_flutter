@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
 import 'package:wolt_with_flutter/pages/restaurant_page.dart';
-import '../constants.dart' as constants;
 
 class XXLCard extends StatefulWidget {
   XXLCard({Key key, @required this.restoObject}) : super(key: key);

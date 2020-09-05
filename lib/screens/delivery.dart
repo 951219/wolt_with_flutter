@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/user_location.dart';
+import 'package:wolt_with_flutter/services/location_service.dart';
 import 'package:wolt_with_flutter/widgets/collapsable_page_header.dart';
 import 'package:wolt_with_flutter/widgets/xxl_builder.dart';
 import '../constants.dart' as constants;
@@ -24,7 +25,12 @@ class Delivery extends StatelessWidget {
                   CollapsableHeader(smallText: 'Delivery', bigText: 'Delivery'),
             ),
             SliverList(
-                delegate: SliverChildListDelegate(XXLBuilder().getList()))
+              delegate: SliverChildListDelegate(
+                [
+                  XXLBuilder(),
+                ],
+              ),
+            )
           ],
         ),
       ),
@@ -38,7 +44,8 @@ class Delivery extends StatelessWidget {
           ),
           //TODO space between icon and title should be smaller
           title: FutureBuilder(
-            future: constants.userLocation,
+            future: constants.userLocation ??=
+                LocationService().pullLocationData(),
             builder:
                 (BuildContext context, AsyncSnapshot<UserLocation> snapshot) {
               if (snapshot.hasData) {

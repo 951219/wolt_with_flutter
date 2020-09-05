@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/category_object.dart';
 import 'package:wolt_with_flutter/restaurantcards/s_card.dart';
+import 'package:wolt_with_flutter/services/category_service.dart';
 import '../constants.dart' as constants;
 
 class SBuilder extends StatelessWidget {
@@ -9,7 +10,8 @@ class SBuilder extends StatelessWidget {
     return Container(
       height: 180,
       child: FutureBuilder(
-        future: constants.categories,
+        future: constants.categories ??=
+            CategoryService().fetchCategoryObjects(),
         builder: (BuildContext context,
             AsyncSnapshot<List<CategoryObject>> snapshot) {
           if (snapshot.hasData) {

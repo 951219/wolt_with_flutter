@@ -16,8 +16,8 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    constants.userLocation = LocationService().pullLocationData();
-    constants.categories = CategoryService().fetchCategoryObjects();
+    constants.userLocation ??= LocationService().pullLocationData();
+    constants.categories ??= CategoryService().fetchCategoryObjects();
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
