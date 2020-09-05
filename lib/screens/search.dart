@@ -60,7 +60,8 @@ class _SearchState extends State<Search> {
           SizedBox(height: 20),
           Center(
               child: FutureBuilder(
-                  future: constants.categories,
+                  future: constants.categories ??=
+                      CategoryService().fetchCategoryObjects(),
                   builder: (BuildContext context,
                       AsyncSnapshot<List<CategoryObject>> snapshot) {
                     if (snapshot.hasData) {

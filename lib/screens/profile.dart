@@ -14,11 +14,8 @@ class Profile extends StatelessWidget {
         pinned: true,
         floating: false,
         delegate: CollapsableHeader(
-            smallText: 'Profile',
-            bigText: 'Howdy ${userdata.firstName}!',
-            showIcon: true),
+            smallText: 'Profile', bigText: 'Howdy ${userdata.firstName}!'),
       ),
-      //TODO remove grey background
       SliverList(
           delegate: SliverChildListDelegate(
         [
@@ -39,24 +36,33 @@ class Profile extends StatelessWidget {
                     child: Row(
                       children: [
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('${userdata.orderAmount}+',
                                 style: TextStyle(fontWeight: FontWeight.bold)),
-                            Text('orders'),
+                            Text('Orders'),
                           ],
                         ),
+                        SizedBox(
+                          width: 10,
+                        ),
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(userdata.tokenAmount.toString(),
                                 style: TextStyle(fontWeight: FontWeight.bold)),
-                            Text('tokens'),
+                            Text('Tokens'),
                           ],
                         ),
+                        SizedBox(
+                          width: 10,
+                        ),
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(userdata.creditsLeft.toString(),
                                 style: TextStyle(fontWeight: FontWeight.bold)),
-                            Text('credits'),
+                            Text('Credits'),
                           ],
                         ),
                       ],

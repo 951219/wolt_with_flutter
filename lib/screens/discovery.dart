@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wolt_with_flutter/datamodels/user_location.dart';
 import 'package:wolt_with_flutter/widgets/s_builder.dart';
 import 'package:wolt_with_flutter/widgets/m_builder.dart';
 import 'package:wolt_with_flutter/widgets/xl_builder.dart';
@@ -24,22 +25,35 @@ class Discovery extends StatelessWidget {
             elevation: 2,
             // TODO remove the shadow below "Discover Tallinn"
             flexibleSpace: FlexibleSpaceBar(
-              titlePadding: constants.PADDING_LTRB,
-              title: Row(children: [
-                Text('Discover ',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 23,
-                        fontWeight: FontWeight.bold)),
-                Text(
-                  'Tallinn',
-                  style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 23,
-                      fontWeight: FontWeight.bold),
-                ),
-              ]),
-            ),
+                titlePadding: constants.PADDING_LTRB,
+                title: FutureBuilder(
+                  future: constants.userLocation,
+                  builder: (BuildContext context,
+                      AsyncSnapshot<UserLocation> snapshot) {
+                    if (snapshot.hasData) {
+                      return Row(children: [
+                        Text('Discover ',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 23,
+                                fontWeight: FontWeight.bold)),
+                        Text(
+                          snapshot.data.city,
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 23,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ]);
+                    } else {
+                      return Text('Discover ',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 23,
+                              fontWeight: FontWeight.bold));
+                    }
+                  },
+                )),
           ),
           SliverList(
             delegate: SliverChildListDelegate([
