@@ -34,19 +34,19 @@ class SCard extends StatelessWidget {
                 },
               ),
             ),
-
-            //TODO text positioning,
             Container(
               alignment: Alignment.centerLeft,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     categoryObject.title,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  Text('${categoryObject.numberOfVenues.toString()} dishes'),
                 ],
               ),
             ),

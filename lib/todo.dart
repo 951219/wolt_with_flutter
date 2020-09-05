@@ -1,1 +1,1 @@
-// TODO networkimages to assets globally
+// TODO restaurantimages to assets globally

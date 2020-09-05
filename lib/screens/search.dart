@@ -60,7 +60,7 @@ class _SearchState extends State<Search> {
           SizedBox(height: 20),
           Center(
               child: FutureBuilder(
-                  future: CategoryService().fetchCategoryObjects(),
+                  future: constants.categories,
                   builder: (BuildContext context,
                       AsyncSnapshot<List<CategoryObject>> snapshot) {
                     if (snapshot.hasData) {
@@ -82,7 +82,6 @@ class _SearchState extends State<Search> {
                                               CategoryDishesPage(CategoryObject(
                                                 title: object.title,
                                               ))))
-                                  // showSearchPage(context, _searchDelegate)
                                 },
                                 child: Text(
                                   object.title,
@@ -92,8 +91,14 @@ class _SearchState extends State<Search> {
                             );
                           }).toList());
                     } else {
-                      return Text('Loading...',
-                          style: TextStyle(color: Colors.white, fontSize: 13));
+                      return Center(
+                        child: Container(
+                            height: 80,
+                            width: 80,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                            )),
+                      );
                     }
                   })),
           Padding(
