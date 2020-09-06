@@ -54,7 +54,7 @@ class RestaurantService {
         isFavorite: true,
         isNew: false),
     RestaurantObject(
-        title: 'Let\'s make some Cake',
+        title: 'Let\'s make a Cake',
         subtitle: 'Nom nom nom',
         imageURL:
             'https://cdn.pixabay.com/photo/2017/01/11/11/33/cake-1971552_1280.jpg',

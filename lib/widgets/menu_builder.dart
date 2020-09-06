@@ -12,25 +12,28 @@ class MenuBuilder extends StatelessWidget {
           (BuildContext context, AsyncSnapshot<List<DishObject>> snapshot) {
         if (snapshot.hasData) {
           return Column(
-            children: snapshot.data.map((object) {
-              return ExpansionTile(
-                title: Text(
-                  object.title,
-                  style: TextStyle(color: Colors.black),
-                ),
-                trailing: CachedNetworkImage(
-                    placeholder: (context, url) =>
-                        Center(child: CircularProgressIndicator()),
-                    fit: BoxFit.cover,
-                    imageUrl: object.imgURL),
-                children: [
-                  // TODO menu item visual
-                  Text(
-                    object.contents.toString(),
+            children: snapshot.data.map(
+              (object) {
+                return ExpansionTile(
+                  title: Text(
+                    object.title,
+                    style: TextStyle(color: Colors.black),
                   ),
-                ],
-              );
-            }).toList(),
+                  trailing: CachedNetworkImage(
+                      placeholder: (context, url) => Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                      fit: BoxFit.cover,
+                      imageUrl: object.imgURL),
+                  children: [
+                    // TODO menu item visual
+                    // Text(
+                    //   object.contents.toString(),
+                    // ),
+                  ],
+                );
+              },
+            ).toList(),
           );
         } else {
           return Container(
