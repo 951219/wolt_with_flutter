@@ -5,9 +5,6 @@ import 'package:wolt_with_flutter/widgets/collapsable_restaurant_page_header.dar
 import 'package:wolt_with_flutter/widgets/menu_builder.dart';
 import '../constants.dart' as constants;
 
-// TODO restaurant page
-// TODO hero animation???
-
 class RestaurantPage extends StatelessWidget {
   RestaurantPage(this.restoObject);
 

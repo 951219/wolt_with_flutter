@@ -22,17 +22,16 @@ class XSCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5)),
-                  child: Container(
-                    width: 60,
-                    height: 60,
-                    // TODO border should be circular
+                Container(
+                  width: 60,
+                  height: 60,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
                     child: CachedNetworkImage(
-                        placeholder: (context, url) =>
-                            Center(child: CircularProgressIndicator()),
-                        fit: BoxFit.cover,
+                        placeholder: (context, url) => Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                        fit: BoxFit.fill,
                         imageUrl: restoObject.imageURL),
                   ),
                 ),
@@ -68,7 +67,9 @@ class XSCard extends StatelessWidget {
                                   : restoObject.rating >= 8
                                       ? Text(' 😀 ')
                                       : Text(' 😔 ')),
-                          Text(restoObject.rating.toString()),
+                          Text(
+                            restoObject.rating.toString(),
+                          ),
                         ],
                       )
                     ],
@@ -91,9 +92,11 @@ class XSCard extends StatelessWidget {
       ),
       onTap: () {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => RestaurantPage(restoObject)));
+          context,
+          MaterialPageRoute(
+            builder: (context) => RestaurantPage(restoObject),
+          ),
+        );
       },
     );
   }

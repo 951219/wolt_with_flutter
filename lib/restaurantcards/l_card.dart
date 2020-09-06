@@ -9,74 +9,79 @@ class LCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Card(
-                semanticContainer: true,
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: Stack(
-                  children: [
-                    Container(
-                        width: 240,
-                        height: 145,
-                        child: CachedNetworkImage(
-                            placeholder: (context, url) =>
-                                Center(child: CircularProgressIndicator()),
-                            fit: BoxFit.cover,
-                            imageUrl: specialObject.imgURL)),
-                    Positioned(
-                        bottom: 10,
-                        left: 10,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              specialObject.title,
-                              style: TextStyle(
-                                shadows: [
-                                  Shadow(
-                                    blurRadius: 10.0,
-                                    color: Colors.black,
-                                  )
-                                ],
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        )),
-                    Positioned(
-                        right: 15,
-                        child: Container(
-                          height: 45,
-                          width: 45,
-                          color: Colors.red,
-                          child: Center(
-                            child: Text(
-                              specialObject.newPrice.toStringAsFixed(2),
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Card(
+            semanticContainer: true,
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            child: Stack(
+              children: [
+                Container(
+                  width: 240,
+                  height: 145,
+                  child: CachedNetworkImage(
+                      placeholder: (context, url) => Center(
+                            child: CircularProgressIndicator(),
                           ),
-                        ))
-                  ],
+                      fit: BoxFit.cover,
+                      imageUrl: specialObject.imgURL),
                 ),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0)),
-                elevation: 2,
-              ),
-            ]),
-        onTap: () {
-          Scaffold.of(context).showSnackBar(
-            SnackBar(
-              content: Text(specialObject.title),
-              duration: Duration(seconds: 1),
+                Positioned(
+                  bottom: 10,
+                  left: 10,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        specialObject.title,
+                        style: TextStyle(
+                          shadows: [
+                            Shadow(
+                              blurRadius: 10.0,
+                              color: Colors.black,
+                            )
+                          ],
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  right: 15,
+                  child: Container(
+                    height: 45,
+                    width: 45,
+                    color: Colors.red,
+                    child: Center(
+                      child: Text(
+                        specialObject.newPrice.toStringAsFixed(2),
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                )
+              ],
             ),
-          );
-          //TODO special object to open a restaurant
-        });
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5.0),
+            ),
+            elevation: 2,
+          ),
+        ],
+      ),
+      onTap: () {
+        Scaffold.of(context).showSnackBar(
+          SnackBar(
+            content: Text(specialObject.title),
+            duration: Duration(seconds: 1),
+          ),
+        );
+      },
+    );
   }
 }
