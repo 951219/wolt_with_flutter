@@ -1,6 +1,24 @@
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
 
 class RestaurantService {
+  // TODO add tags to restaurants
+  List<String> _tagList = [
+    'Side',
+    'Chicken',
+    'Lamb',
+    'Goat',
+    'Beef',
+    'Breakfast',
+    'Seafood',
+    'Pasta',
+    'Vegetarian',
+    'Pork',
+    'Starter',
+    'Dessert',
+    'Miscellaneous',
+    'Vegan'
+  ];
+
   List<RestaurantObject> _restoList = [
     RestaurantObject(
         title: 'Restaurant ',
@@ -159,5 +177,9 @@ class RestaurantService {
 
   List<String> getRestaurantNames() {
     return _restoList.map((e) => e.title.toLowerCase()).toList();
+  }
+
+  List<String> getTags() {
+    return _tagList.map((r) => r.toLowerCase()).toList();
   }
 }
