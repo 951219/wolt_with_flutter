@@ -18,7 +18,7 @@ class _NearbyState extends State<Nearby> {
           ),
           SliverList(
             delegate: SliverChildListDelegate(
-              [XXLBuilder()],
+              [Container(color: Colors.white, child: XXLBuilder())],
             ),
           )
         ],

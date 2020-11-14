@@ -27,9 +27,9 @@ class MenuBuilder extends StatelessWidget {
                       imageUrl: object.imgURL),
                   children: [
                     // TODO menu item visual
-                    // Text(
-                    //   object.contents.toString(),
-                    // ),
+                    Text(
+                      object.contents.toString(),
+                    ),
                   ],
                 );
               },

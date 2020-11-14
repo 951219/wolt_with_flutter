@@ -27,7 +27,7 @@ class Delivery extends StatelessWidget {
             SliverList(
               delegate: SliverChildListDelegate(
                 [
-                  XXLBuilder(),
+                  Container(color: Colors.white, child: XXLBuilder()),
                 ],
               ),
             )

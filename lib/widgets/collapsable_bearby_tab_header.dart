@@ -10,13 +10,12 @@ import '../constants.dart' as constants;
 
 class CollapsableNearByTabHeader implements SliverPersistentHeaderDelegate {
   final double minExtent = 60;
-  final double maxExtent = 280;
+  final double maxExtent = 270;
 
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
-      color: Colors.white,
       height: 270,
       child: Opacity(
         opacity: titleOpacity(shrinkOffset),
@@ -30,7 +29,8 @@ class CollapsableNearByTabHeader implements SliverPersistentHeaderDelegate {
                   LatLng(snapshot.data.latitude, snapshot.data.longitude);
               return Stack(children: [
                 Container(
-                  height: 400,
+                  color: Colors.white,
+                  height: 450,
                   child: FlutterMap(
                     options: MapOptions(
                       center: location,
@@ -67,7 +67,7 @@ class CollapsableNearByTabHeader implements SliverPersistentHeaderDelegate {
                       gradient: LinearGradient(
                         begin: FractionalOffset.topCenter,
                         end: FractionalOffset.bottomCenter,
-                        colors: [Colors.grey.withOpacity(0), Colors.white],
+                        colors: [Colors.white.withOpacity(0), Colors.white],
                         stops: [0, 1],
                       ),
                     ),

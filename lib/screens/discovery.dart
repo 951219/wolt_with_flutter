@@ -14,172 +14,183 @@ class Discovery extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            backgroundColor: Colors.white,
-            expandedHeight: 120,
-            floating: false,
-            pinned: true,
-            elevation: 2,
-            // TODO remove the shadow below "Discover Tallinn"
-            flexibleSpace: FlexibleSpaceBar(
-                titlePadding: constants.PADDING_LTRB,
-                title: FutureBuilder(
-                  future: constants.userLocation,
-                  builder: (BuildContext context,
-                      AsyncSnapshot<UserLocation> snapshot) {
-                    if (snapshot.hasData) {
-                      return Row(children: [
-                        Text('Discover ',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 23,
-                                fontWeight: FontWeight.bold)),
-                        Text(
-                          snapshot.data.city,
-                          style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 23,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ]);
-                    } else {
-                      return Text('Discover ',
+    return CustomScrollView(
+      slivers: [
+        SliverAppBar(
+          backgroundColor: Colors.white,
+          expandedHeight: 120,
+          floating: false,
+          pinned: true,
+          elevation: 2,
+          flexibleSpace: FlexibleSpaceBar(
+              titlePadding: constants.PADDING_LTRB,
+              title: FutureBuilder(
+                future: constants.userLocation,
+                builder: (BuildContext context,
+                    AsyncSnapshot<UserLocation> snapshot) {
+                  if (snapshot.hasData) {
+                    return Row(children: [
+                      Text('Discover ',
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 23,
-                              fontWeight: FontWeight.bold));
-                    }
-                  },
-                )),
-          ),
-          SliverList(
-            delegate: SliverChildListDelegate([
-              XLBuilder(),
-              Padding(
-                padding: constants.PADDING_LTRB,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      'Only on Wolt!',
-                      style: constants.TITLE_STYLE,
-                    ),
-                    FlatButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      color: Colors.blue[50],
-                      textColor: Colors.blue,
-                      onPressed: () => {},
-                      child: Text(
-                        'See all',
+                              fontWeight: FontWeight.bold)),
+                      Text(
+                        snapshot.data.city,
                         style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
+                            color: Colors.blue,
+                            fontSize: 23,
+                            fontWeight: FontWeight.bold),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              MBuider(),
-              Padding(
-                padding: constants.PADDING_LTRB,
-                child: Text(
-                  'Wolt Specials!',
-                  style: constants.TITLE_STYLE,
-                ),
-              ),
-              LBuilder(),
-              Padding(
-                padding: constants.PADDING_LTRB,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      'Categories',
-                      style: constants.TITLE_STYLE,
-                    ),
-                    FlatButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      color: Colors.blue[50],
-                      textColor: Colors.blue,
-                      onPressed: () => {},
-                      child: Text(
-                        'See all',
+                    ]);
+                  } else {
+                    return Text('Discover ',
                         style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SBuilder(),
+                            color: Colors.black,
+                            fontSize: 23,
+                            fontWeight: FontWeight.bold));
+                  }
+                },
+              )),
+        ),
+        SliverList(
+          delegate: SliverChildListDelegate(
+            [
               Container(
-                padding: constants.PADDING_FOR_QUICKLINKS,
+                color: Colors.white,
                 child: Column(
                   children: [
-                    ListTile(
-                      leading: Text(
-                        'Quick links',
-                        style: constants.TITLE_STYLE,
+                    XLBuilder(),
+                    Padding(
+                      padding: constants.PADDING_LTRB,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            'Only on Wolt!',
+                            style: constants.TITLE_STYLE,
+                          ),
+                          FlatButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            color: Colors.blue[50],
+                            textColor: Colors.blue,
+                            onPressed: () => {},
+                            child: Text(
+                              'See all',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    ListTile(
-                      leading: Text(
-                        'Redeem Code',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                    MBuider(),
+                    Padding(
+                      padding: constants.PADDING_LTRB,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Wolt Specials!',
+                            style: constants.TITLE_STYLE,
+                          ),
+                        ],
                       ),
-                      trailing: Icon(Icons.navigate_next),
-                      onTap: () => {},
-                      dense: true,
                     ),
-                    Divider(
-                      indent: 15,
-                      height: 1,
-                      color: Colors.grey[350],
-                    ),
-                    ListTile(
-                      leading: Text(
-                        'Customer Support',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                    LBuilder(),
+                    Padding(
+                      padding: constants.PADDING_LTRB,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            'Categories',
+                            style: constants.TITLE_STYLE,
+                          ),
+                          FlatButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            color: Colors.blue[50],
+                            textColor: Colors.blue,
+                            onPressed: () => {},
+                            child: Text(
+                              'See all',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                      trailing: Icon(Icons.navigate_next),
-                      onTap: () => {},
-                      dense: true,
                     ),
-                    Divider(
-                      indent: 15,
-                      height: 1,
-                      color: Colors.grey[350],
-                    ),
-                    ListTile(
-                      leading: Text(
-                        'Send a gift',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                    SBuilder(),
+                    Container(
+                      padding: constants.PADDING_FOR_QUICKLINKS,
+                      child: Column(
+                        children: [
+                          ListTile(
+                            leading: Text(
+                              'Quick links',
+                              style: constants.TITLE_STYLE,
+                            ),
+                          ),
+                          ListTile(
+                            leading: Text(
+                              'Redeem Code',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            trailing: Icon(Icons.navigate_next),
+                            onTap: () => {},
+                            dense: true,
+                          ),
+                          Divider(
+                            indent: 15,
+                            height: 1,
+                            color: Colors.grey[350],
+                          ),
+                          ListTile(
+                            leading: Text(
+                              'Customer Support',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            trailing: Icon(Icons.navigate_next),
+                            onTap: () => {},
+                            dense: true,
+                          ),
+                          Divider(
+                            indent: 15,
+                            height: 1,
+                            color: Colors.grey[350],
+                          ),
+                          ListTile(
+                            leading: Text(
+                              'Send a gift',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            trailing: Icon(Icons.navigate_next),
+                            onTap: () => {},
+                            dense: true,
+                          ),
+                          Divider(
+                            indent: 15,
+                            height: 1,
+                            color: Colors.grey[350],
+                          ),
+                          SizedBox(
+                            height: 100,
+                          )
+                        ],
                       ),
-                      trailing: Icon(Icons.navigate_next),
-                      onTap: () => {},
-                      dense: true,
                     ),
-                    Divider(
-                      indent: 15,
-                      height: 1,
-                      color: Colors.grey[350],
-                    ),
-                    SizedBox(
-                      height: 100,
-                    )
                   ],
                 ),
               ),
-            ]),
+            ],
           ),
-        ],
-      ),
+        )
+      ],
     );
   }
 }

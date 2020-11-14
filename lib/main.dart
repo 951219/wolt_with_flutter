@@ -62,6 +62,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.white,
           currentIndex: _currentIndex,
           type: BottomNavigationBarType.fixed,
           iconSize: 27,

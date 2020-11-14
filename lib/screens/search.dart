@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wolt_with_flutter/datamodels/category_object.dart';
 import 'package:wolt_with_flutter/datamodels/restaurant_object.dart';
-import 'package:wolt_with_flutter/pages/category_dishes_page.dart';
 import 'package:wolt_with_flutter/restaurantcards/xs_card.dart';
 import 'package:wolt_with_flutter/services/category_service.dart';
 import 'package:wolt_with_flutter/services/restaurant_service.dart';
@@ -182,7 +181,6 @@ class _SearchAppBarDelegate extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    //TODO searching would check for tags as well
     final Iterable<String> suggestions =
         _words.where((word) => word.contains(query));
 
