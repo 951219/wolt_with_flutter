@@ -14,23 +14,38 @@ class MenuBuilder extends StatelessWidget {
           return Column(
             children: snapshot.data.map(
               (object) {
-                return ExpansionTile(
-                  title: Text(
-                    object.title,
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  trailing: CachedNetworkImage(
-                      placeholder: (context, url) => Center(
-                            child: CircularProgressIndicator(),
-                          ),
-                      fit: BoxFit.cover,
-                      imageUrl: object.imgURL),
-                  children: [
-                    // TODO menu item visual
-                    Text(
-                      object.contents.toString(),
+                return Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: ExpansionTile(
+                    tilePadding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                    title: Text(
+                      object.title,
+                      style: TextStyle(color: Colors.black),
                     ),
-                  ],
+                    trailing: Container(
+                      height: 80,
+                      width: 100,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        elevation: 1.5,
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        child: CachedNetworkImage(
+                            placeholder: (context, url) => Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                            fit: BoxFit.cover,
+                            imageUrl: object.imgURL),
+                      ),
+                    ),
+                    children: [
+                      // TODO menu item visual
+                      Text(
+                        object.contents.toString(),
+                      ),
+                    ],
+                  ),
                 );
               },
             ).toList(),

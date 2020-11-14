@@ -19,6 +19,10 @@ class _XXLCardState extends State<XXLCard> {
       padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
       child: InkWell(
         child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          elevation: 1.5,
           semanticContainer: true,
           clipBehavior: Clip.antiAliasWithSaveLayer,
           child: Column(children: [
@@ -175,10 +179,6 @@ class _XXLCardState extends State<XXLCard> {
               ),
             ),
           ]),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          elevation: 1.5,
         ),
         onTap: () {
           Navigator.push(

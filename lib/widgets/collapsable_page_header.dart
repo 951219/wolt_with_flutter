@@ -80,9 +80,7 @@ class CollapsableHeader implements SliverPersistentHeaderDelegate {
 
   double titleOpacity(double shrinkOffset) {
     // simple formula: fade out text as soon as shrinkOffset > 0
-
     return 1 - max(0, shrinkOffset) / maxExtent;
-
     // return 1.0 - max(0.0, (shrinkOffset - minExtent)) / (maxExtent - minExtent);
   }
 

@@ -7,7 +7,8 @@ class DishObject {
   factory DishObject.fromJson(Map<String, dynamic> json) {
     List<String> ingredients = [];
     for (int i = 1; i <= 20; i++) {
-      if (json.containsKey('strIngredient$i')) {
+      if (json.containsKey('strIngredient$i') &&
+          json['strIngredient$i'] != "") {
         String ingredient = json['strIngredient$i'];
         ingredients.add(ingredient);
       }

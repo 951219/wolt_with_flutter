@@ -5,11 +5,16 @@ import 'package:wolt_with_flutter/widgets/collapsable_restaurant_page_header.dar
 import 'package:wolt_with_flutter/widgets/menu_builder.dart';
 import '../constants.dart' as constants;
 
-class RestaurantPage extends StatelessWidget {
+class RestaurantPage extends StatefulWidget {
   RestaurantPage(this.restoObject);
 
   final RestaurantObject restoObject;
 
+  @override
+  _RestaurantPageState createState() => _RestaurantPageState();
+}
+
+class _RestaurantPageState extends State<RestaurantPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,8 +24,8 @@ class RestaurantPage extends StatelessWidget {
             SliverPersistentHeader(
               pinned: true,
               floating: false,
-              delegate:
-                  CollapsableRestaurantPageHeader(restoObject: restoObject),
+              delegate: CollapsableRestaurantPageHeader(
+                  restoObject: widget.restoObject),
             ),
             SliverList(
               delegate: SliverChildListDelegate(
@@ -31,7 +36,7 @@ class RestaurantPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          restoObject.title,
+                          widget.restoObject.title,
                           style: TextStyle(
                               fontSize: 40,
                               fontWeight: FontWeight.bold,
@@ -39,11 +44,36 @@ class RestaurantPage extends StatelessWidget {
                         ),
                         CircleAvatar(
                           backgroundColor: Colors.grey[200],
-                          child: Icon(
-                            Icons.favorite_border,
-                            color: Colors.black,
-                            size: 30,
-                          ),
+                          child: widget.restoObject.isFavorite
+                              ? IconButton(
+                                  splashRadius: 25,
+                                  padding: EdgeInsets.all(0),
+                                  icon: Icon(
+                                    Icons.favorite,
+                                    color: Colors.red,
+                                    size: 30,
+                                  ),
+                                  onPressed: () {
+                                    super.setState(
+                                      () {
+                                        widget.restoObject.isFavorite = false;
+                                      },
+                                    );
+                                  },
+                                )
+                              : IconButton(
+                                  splashRadius: 25,
+                                  padding: EdgeInsets.all(0),
+                                  icon: Icon(
+                                    Icons.favorite_border,
+                                    color: Colors.black,
+                                    size: 30,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      widget.restoObject.isFavorite = true;
+                                    });
+                                  }),
                         ),
                       ],
                     ),
@@ -53,20 +83,21 @@ class RestaurantPage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(restoObject.subtitle),
-                        Text(restoObject.pricing)
+                        Text(widget.restoObject.subtitle),
+                        Text(widget.restoObject.pricing)
                       ],
                     ),
                   ),
                   ListTile(
                     leading: Container(
-                      child:
-                          restoObject.rating >= 9 ? Text(' 😍') : Text(' 😀'),
+                      child: widget.restoObject.rating >= 9
+                          ? Text(' 😍')
+                          : Text(' 😀'),
                     ),
                     title: Container(
-                      child: restoObject.rating >= 9
-                          ? Text('Excellent   ${restoObject.rating}')
-                          : Text('Amazing   ${restoObject.rating}'),
+                      child: widget.restoObject.rating >= 9
+                          ? Text('Excellent   ${widget.restoObject.rating}')
+                          : Text('Amazing   ${widget.restoObject.rating}'),
                     ),
                   ),
                   ListTile(
@@ -89,7 +120,7 @@ class RestaurantPage extends StatelessWidget {
                   ListTile(
                     leading: Icon(Icons.motorcycle),
                     title: Text(
-                        'Delivery in ${restoObject.baseEstimate} - ${restoObject.baseEstimate + 10} min'),
+                        'Delivery in ${widget.restoObject.baseEstimate} - ${widget.restoObject.baseEstimate + 10} min'),
                     subtitle: FutureBuilder(
                         future: constants.userLocation,
                         builder: (BuildContext context,
